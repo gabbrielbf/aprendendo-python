@@ -1,4 +1,6 @@
 def exibir_agenda():
+    """ Função de exibição do menu """
+    
     print(' --- Minha agenda --- ')
     print('O que deseja fazer: ')
     print()
@@ -13,15 +15,28 @@ def exibir_agenda():
 
 
 def adicionar_contato(nome, telefone, email):
-    minha_agenda[1]['nome'] = nome
-    minha_agenda[1]['telefone'] = telefone
-    minha_agenda[1]['email'] = email
-    pass
+    """ Função para adicionar um usuário """
+
+    if minha_agenda == '':
+        minha_agenda = {}
+
+    """ Parei aqui tentando solucionar a lógica da adição de adição 
+    de um novo dicionário com os dados do usuário """
+
+    for contato in range(1, len(minha_agenda)):
+
+        minha_agenda[contato] = {'nome': None, 'telefone': None,
+                    'email': None, 'favorito': None}
+
+        minha_agenda[contato]['nome'] = nome
+        minha_agenda[contato]['telefone'] = telefone
+        minha_agenda[contato]['email'] = email
 
 
-minha_agenda = {1: {'nome': None, 'telefone': None,
+minha_agenda = {}
+
+variavel_temporaria = {1: {'nome': None, 'telefone': None,
                     'email': None, 'favorito': None}}
-
 
 match exibir_agenda():
     case 1:
