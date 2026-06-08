@@ -17,18 +17,17 @@ def exibir_agenda():
 def adicionar_contato(nome, telefone, email):
     """ Função para adicionar um usuário """
 
-    for contato in minha_agenda:
+    minha_agenda.append({'nome': nome, 'telefone': telefone, 'e-mail': email, 'favorito': False})
 
-        """ O looping FOR está duplicando o conteúdo das variáveis dentro
-        das chave: valor na minha_agenda, pensar em uma forma de conferir se a chave está
-        vazia antes de preencher. """
-
-        minha_agenda[contato]['nome'] = nome
-        minha_agenda[contato]['telefone'] = telefone
-        minha_agenda[contato]['email'] = email
+    print('Contato adicionado com sucesso!')
+    print()
+    return
 
 
 def adicionar_mais_alguem():
+    """ Função para definir se o usuário quer
+    continuar adicionando pessoas. """
+
     print()
     print('1 - Adicionar mais alguém')
     print('0 - Voltar ao MENU')
@@ -37,33 +36,50 @@ def adicionar_mais_alguem():
 
     match adicionar_outro:
         case 1:
-            return True
+            adicionar_outro = True
         case 0:
-            return False
+            adicionar_outro = False
+    return adicionar_outro
+
+def editar_agenda(nome, telefone, email):
+    print('Qual contato deseja editar: ')
+    for indice, contato in enumerate(minha_agenda, start=1):
+        print(f'{indice} - {tuple(contato)}')
+    print()
+    editar = input('Digite o INDÍCE que deseja editar: ')
+    return editar
 
 
-minha_agenda = {1: {'nome': None, 'telefone': None,
-                    'email': None, 'favorito': None},
-                2: {'nome': None, 'telefone': None,
-                    'email': None, 'favorito': None},
-                3: {'nome': None, 'telefone': None,
-                    'email': None, 'favorito': None},
-                4: {'nome': None, 'telefone': None,
-                    'email': None, 'favorito': None}}
+minha_agenda = []
 
+while True:
+    match exibir_agenda():
+        case 0:
+            print()
+            print('Programa encerrado...')
+            print()
+            break
+        case 1:
+            while True:
+                nome = input('Digite o nome do contato: ')
+                telefone = input('Digite o telefone do contato: ')
+                email = input('Digite o e-mail do contato: ')
+                adicionar_contato(nome, telefone, email)
 
-match exibir_agenda():
-    case 1:
-        while True:
-            nome = input('Digite o nome do contato: ')
-            telefone = input('Digite o telefone do contato: ')
-            email = input('Digite o e-mail do contato: ')
-            adicionar_contato(nome, telefone, email)
-            print(minha_agenda)
-
-            if adicionar_mais_alguem() == True:
+                if adicionar_mais_alguem() == True:
+                    continue
+                else:
+                    print('Voltando para o menu...')
+                    print()
+                    break
+        case 2:
+            if minha_agenda == []:
+                print('Você ainda não adicionou ninguém!')
+                print()
                 continue
             else:
-                print('Voltando para o menu...')
-                print()
-                break
+                nome = input('Digite o nome do contato: ')
+                telefone = input('Digite o telefone do contato: ')
+                email = input('Digite o e-mail do contato: ')
+                editar_agenda(nome, telefone, email)
+
