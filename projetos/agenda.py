@@ -6,7 +6,7 @@ def exibir_agenda():
     print()
     print('1 - Salvar contato')
     print('2 - Editar contato')
-    print('3- Deletar contato')
+    print('3 - Deletar contato')
     print('4 - Marcar um contato como favorito')
     print('0 - Sair')
     print()
@@ -17,10 +17,10 @@ def exibir_agenda():
 def adicionar_contato(nome, telefone, email):
     """ Função para adicionar um usuário """
 
-    minha_agenda.append({'nome': nome, 'telefone': telefone, 'e-mail': email, 'favorito': False})
+    minha_agenda.append({'nome': nome, 'telefone': telefone,
+                          'email': email, 'favorito': False})
 
-    print('Contato adicionado com sucesso!')
-    print()
+    print(f'Contato: {nome} | {telefone} adicionado com sucesso!')
     return
 
 
@@ -32,22 +32,42 @@ def adicionar_mais_alguem():
     print('1 - Adicionar mais alguém')
     print('0 - Voltar ao MENU')
     print('----------')
-    adicionar_outro = int(input('Deseja adicionar mais alguém? '))
+    while True:
+        adicionar_outro = int(input('Deseja adicionar mais alguém? '))
+        match adicionar_outro:
+            case 1:
+                adicionar_outro = True
+                break
+            case 0:
+                adicionar_outro = False
+                break
+            case _:
+                print('Opção inválida.')
+                print()
+                continue
 
-    match adicionar_outro:
-        case 1:
-            adicionar_outro = True
-        case 0:
-            adicionar_outro = False
     return adicionar_outro
 
-def editar_agenda(nome, telefone, email):
-    print('Qual contato deseja editar: ')
+
+def visualizar_contatos(agenda):
+    print('Estes são seus contatos: ')
     for indice, contato in enumerate(minha_agenda, start=1):
-        print(f'{indice} - {tuple(contato)}')
+        favorito = '❤️' if contato['favorito'] else ' '
+        nome_contato = contato['nome']
+        numero_contato = contato['telefone']
+        email_contato = contato['email']
+        print(f'{indice} - [{favorito}] | Nome: {nome_contato} | Número: {numero_contato} | E-mail: {email_contato}')
     print()
-    editar = input('Digite o INDÍCE que deseja editar: ')
-    return editar
+    return 
+
+
+def editar_agenda(agenda, indice_contato):
+    print('Qual contato deseja editar: ')
+    visualizar_contatos(minha_agenda)
+
+    
+    
+    return 
 
 
 minha_agenda = []
@@ -61,7 +81,7 @@ while True:
             break
         case 1:
             while True:
-                nome = input('Digite o nome do contato: ')
+                nome = input('Digite o nome do contato: ').title()
                 telefone = input('Digite o telefone do contato: ')
                 email = input('Digite o e-mail do contato: ')
                 adicionar_contato(nome, telefone, email)
@@ -78,8 +98,5 @@ while True:
                 print()
                 continue
             else:
-                nome = input('Digite o nome do contato: ')
-                telefone = input('Digite o telefone do contato: ')
-                email = input('Digite o e-mail do contato: ')
-                editar_agenda(nome, telefone, email)
+                editar_agenda(minha_agenda)
 
