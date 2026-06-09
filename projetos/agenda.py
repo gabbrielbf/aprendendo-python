@@ -118,9 +118,25 @@ def editar_contato(agenda, indice_contato, nome, telefone, email):
     return 
 
 
+def deletar_contato(agenda, indice_contato):
+    """ Função designada apenas para deletar contatos """
+
+    indice_contato_correto = indice_contato - 1
+
+    for contato in range(len(agenda)):
+        if indice_contato_correto == contato:
+            minha_agenda.remove(minha_agenda[contato])
+            break
+
+    print(f'O contato de indice {indice_contato} foi removido!')
+    print()
+
+    return 
+
 minha_agenda = []
 
 while True:
+    os.system('cls')
     match exibir_agenda():
         case 0:
             print()
@@ -173,9 +189,9 @@ while True:
                             editar_somente_email(minha_agenda, indice_contato, novo_email)
                             break
                         case 4:
-                            novo_nome = input('Digite o nome desejado: ').title()
+                            novo_nome = input('Digite o NOME desejado: ').title()
                             novo_contato = input('Digite o CONTATO desejado: ')
-                            novo_contato = input('Digite o E-MAIL desejado: ')
+                            novo_email = input('Digite o E-MAIL desejado: ')
                             editar_contato(minha_agenda, indice_contato, novo_nome, novo_contato, novo_email)
                             break
                         case _:
@@ -183,3 +199,13 @@ while True:
                             print()
                             continue
                 
+        case 3:
+            if minha_agenda == []:
+                print('Você ainda não adicionou ninguém!')
+                print()
+                continue
+            else:
+                visualizar_contatos(minha_agenda)
+                indice_contato = int(input('Digite o INDICE de qual deseja deletar: '))
+                deletar_contato(minha_agenda, indice_contato)
+    time.sleep(0.9)
