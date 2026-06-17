@@ -1,150 +1,150 @@
 #Exemplo de herança
-# print("\nExemplo de herança:")
-# class Animal:
-#   def __init__(self, nome) -> None:
-#     self.nome = nome
+print("\nExemplo de herança:")
+class Animal:
+  def __init__(self, nome) -> None:
+    self.nome = nome
 
-#   def andar(self):
-#     print(f"Oanimal {self.nome} andou")
-#     return
+  def andar(self):
+    print(f"Oanimal {self.nome} andou")
+    return
 
-#   def emitir_som(self):
-#     pass
+  def emitir_som(self):
+    pass
 
-# class Cachorro(Animal):
-#   def emitir_som(self):
-#     return "Au, au"
+class Cachorro(Animal):
+  def emitir_som(self):
+    return "Au, au"
   
-# class Gato(Animal):
-#   def emitir_som(self):
-#     return "Miau!"
+class Gato(Animal):
+  def emitir_som(self):
+    return "Miau!"
   
-# dog = Cachorro(nome="Rex")
-# cat = Gato(nome="Felix")
+dog = Cachorro(nome="Rex")
+cat = Gato(nome="Felix")
 
-# print("\nExemplo de polimorfismo")
-# animais = [dog, cat]
+print("\nExemplo de polimorfismo")
+animais = [dog, cat]
 
-# for animal in animais:
-#   print(f"{animal.nome} faz: {animal.emitir_som()}")
+for animal in animais:
+  print(f"{animal.nome} faz: {animal.emitir_som()}")
 
-# class Pessoa:
-#     def __init__(self, nome='', idade=0):
-#         self.nome = nome
-#         self.idade = idade
+class Pessoa:
+    def __init__(self, nome='', idade=0):
+        self.nome = nome
+        self.idade = idade
 
-#     def fazer_aniversario(self):
-#         self.idade += 1
+    def fazer_aniversario(self):
+        self.idade += 1
     
-#     def exibir_dados(self):
-#         print(f'Nome: {self.nome}| Idade: {self.idade}')
+    def exibir_dados(self):
+        print(f'Nome: {self.nome}| Idade: {self.idade}')
 
 
-# class Aluno(Pessoa):
-#     def __init__(self, nome='', idade=0, curso='', turma=''):
-#         super().__init__(nome, idade)
-#         self.curso = curso
-#         self.turma = turma
+class Aluno(Pessoa):
+    def __init__(self, nome='', idade=0, curso='', turma=''):
+        super().__init__(nome, idade)
+        self.curso = curso
+        self.turma = turma
 
-#     def fazer_matricula(self):
-#         print(f'O Aluno {self.nome} acabou de se matricular.')
-
-
-# class Professor(Pessoa):
-#     def __init__(self, nome='', idade=0, especialidade='', nivel=''):
-#         super().__init__(nome, idade)
-#         self.especialidade = especialidade
-#         self.nivel = nivel
-
-#     def dar_aula(self):
-#         print(f'O Prof° {self.nome} começou a dar aula.')
-#         pass
+    def fazer_matricula(self):
+        print(f'O Aluno {self.nome} acabou de se matricular.')
 
 
-# class Funcionario(Pessoa):
-#     def __init__(self, nome='', idade=0, cargo='', setor='', salario=0):
-#       super().__init__(nome, idade)
-#       self.cargo = cargo
-#       self.setor = setor
-#       self.salario = salario
+class Professor(Pessoa):
+    def __init__(self, nome='', idade=0, especialidade='', nivel=''):
+        super().__init__(nome, idade)
+        self.especialidade = especialidade
+        self.nivel = nivel
 
-#     def bater_ponto(self):
-#         print(f'A funcionária {self.nome} acabou de bater o ponto.')
+    def dar_aula(self):
+        print(f'O Prof° {self.nome} começou a dar aula.')
+        pass
 
-#     def exibir_dados(self):
-#         print(f'Nome: {self.nome} | Idade: {self.idade} | Salário: {self.salario}')
 
-# print()
-# a1 = Aluno('João', 17, 'Engenharia', '2° Ano')
-# a1.fazer_aniversario()
-# a1.fazer_matricula()
+class Funcionario(Pessoa):
+    def __init__(self, nome='', idade=0, cargo='', setor='', salario=0):
+      super().__init__(nome, idade)
+      self.cargo = cargo
+      self.setor = setor
+      self.salario = salario
 
-# p1 = Professor('Marcos', 39, 'Engenharia de processos', 'Mestrado')
-# p1.fazer_aniversario()
-# p1.dar_aula()
+    def bater_ponto(self):
+        print(f'A funcionária {self.nome} acabou de bater o ponto.')
 
-# f1 = Funcionario('Maria', 28, 'Limpeza', 'B2', 1500)
-# f1.fazer_aniversario()
-# f1.bater_ponto()
-# f1.exibir_dados()
-# print()
+    def exibir_dados(self):
+        print(f'Nome: {self.nome} | Idade: {self.idade} | Salário: {self.salario}')
 
-# print("\nExemplo de encapsulamento:")
-# class ContaBancaria:
-#   def __init__(self, saldo) -> None:
-#     self.__saldo = saldo # Atributo privado
+print()
+a1 = Aluno('João', 17, 'Engenharia', '2° Ano')
+a1.fazer_aniversario()
+a1.fazer_matricula()
 
-#   def depositar(self, valor):
-#     if valor > 0:
-#       self.__saldo += valor
+p1 = Professor('Marcos', 39, 'Engenharia de processos', 'Mestrado')
+p1.fazer_aniversario()
+p1.dar_aula()
 
-#   def sacar(self, valor):
-#     if valor > 0 and valor <= self.__saldo:
-#       self.__saldo -= valor
+f1 = Funcionario('Maria', 28, 'Limpeza', 'B2', 1500)
+f1.fazer_aniversario()
+f1.bater_ponto()
+f1.exibir_dados()
+print()
 
-#   def consultar_saldo(self):
-#     return self.__saldo
+print("\nExemplo de encapsulamento:")
+class ContaBancaria:
+  def __init__(self, saldo) -> None:
+    self.__saldo = saldo # Atributo privado
+
+  def depositar(self, valor):
+    if valor > 0:
+      self.__saldo += valor
+
+  def sacar(self, valor):
+    if valor > 0 and valor <= self.__saldo:
+      self.__saldo -= valor
+
+  def consultar_saldo(self):
+    return self.__saldo
     
-# conta = ContaBancaria(saldo=1000)
-# print(f"Saldo da conta bancária: {conta.consultar_saldo()}")
-# conta.depositar(valor=500)
-# print(f"Saldo da conta bancária: {conta.consultar_saldo()}")
-# conta.depositar(valor=-500)
-# print(f"Saldo da conta bancária: {conta.consultar_saldo()}")
-# conta.sacar(valor=2000)
-# print(f"Saldo da conta bancária: {conta.consultar_saldo()}")
+conta = ContaBancaria(saldo=1000)
+print(f"Saldo da conta bancária: {conta.consultar_saldo()}")
+conta.depositar(valor=500)
+print(f"Saldo da conta bancária: {conta.consultar_saldo()}")
+conta.depositar(valor=-500)
+print(f"Saldo da conta bancária: {conta.consultar_saldo()}")
+conta.sacar(valor=2000)
+print(f"Saldo da conta bancária: {conta.consultar_saldo()}")
 
-# conta_do_zezinho = ContaBancaria(saldo=50)
+conta_do_zezinho = ContaBancaria(saldo=50)
 
-# class Veiculo:
-#   def __init__(self, marca, modelo):
-#     self.marca = marca
-#     self.modelo = modelo
+class Veiculo:
+  def __init__(self, marca, modelo):
+    self.marca = marca
+    self.modelo = modelo
 
-#   def ligar_veiculo(self):
-#     print(f'O veiculo {self.marca} - {self.modelo} ligou!')
+  def ligar_veiculo(self):
+    print(f'O veiculo {self.marca} - {self.modelo} ligou!')
 
 
-# class Moto(Veiculo):
-#   def __init__(self, marca, modelo):
-#     super().__init__(marca, modelo)
+class Moto(Veiculo):
+  def __init__(self, marca, modelo):
+    super().__init__(marca, modelo)
 
-#   def ligar_veiculo(self):
-#     print(f'A moto {self.marca} - {self.modelo} ligou usando os pedais.')
+  def ligar_veiculo(self):
+    print(f'A moto {self.marca} - {self.modelo} ligou usando os pedais.')
   
-# class Carro(Veiculo):
-#   def __init__(self, marca, modelo):
-#     super().__init__(marca, modelo)
+class Carro(Veiculo):
+  def __init__(self, marca, modelo):
+    super().__init__(marca, modelo)
 
-#   def ligar_veiculo(self):
-#     print(f'O carro {self.marca} - {self.modelo} ligou usando a chave.')
+  def ligar_veiculo(self):
+    print(f'O carro {self.marca} - {self.modelo} ligou usando a chave.')
 
 
-# m1 = Moto('Yamaha', 'Factor')
-# c1 = Carro('Chevrolet', 'Celta')
+m1 = Moto('Yamaha', 'Factor')
+c1 = Carro('Chevrolet', 'Celta')
 
-# m1.ligar_veiculo()
-# c1.ligar_veiculo()
+m1.ligar_veiculo()
+c1.ligar_veiculo()
 
 # Cadastro simples de funcionários
 
@@ -193,3 +193,29 @@ player = Guerreiro('Hitler', 80)
 print(monstro.receber_dano(15))
 print(player.usar_escudo())
 print(player.receber_dano(20))
+
+# Sistema de biblioteca
+
+class ItemBiblioteca:
+  def __init__(self, titulo='', disponivel=True):
+    self.titulo = titulo
+    self.disponivel = disponivel
+
+  def realizar_emprestimo(self):
+    if self.disponivel == True:
+      self.disponivel = False
+      return f'Boa leitura!'
+    else:
+      return f'O {self.titulo} não está disponível!'
+
+class Livro(ItemBiblioteca):
+  def exibir_num_de_pag(self):
+    return f'O livro: {self.titulo} tem 100 páginas!'
+  
+livro = Livro('Conto de fadas')
+print(livro.realizar_emprestimo())
+print(livro.exibir_num_de_pag()) # <- Realizando um empréstimo pela primeira vez do livro (Está disponível)
+print()
+print(livro.realizar_emprestimo()) # <- Realizando pós X leitor pegar o livro para ler, ou seja (Não está disponível)
+
+
