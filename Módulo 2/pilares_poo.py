@@ -221,26 +221,38 @@
 # Sistema simples de cadastro bancário
 
 class Conta:
-    def __init__(self,titular='', saldo=0):
-        self.titular = titular
+    def __init__(self, nome='', saldo=0):
+        self.nome = nome
         self.saldo = saldo
 
     def exibir_dados(self):
-        return f'Nome: {self.nome} | Saldo: R$ {self.saldo}'
+        return f'Nome: {self.nome:<5} | Saldo: R$ {self.saldo:<5}'
     
 class ContaPoupanca(Conta):
-    def __init__(self, titular='', saldo=0, taxa_rendimento=0):
-        super().__init__(titular, saldo)
+    def __init__(self, nome='', saldo=0, taxa_rendimento=0):
+        super().__init__(nome, saldo)
         self.taxa_rendimento = taxa_rendimento
         
     def exibir_dados(self):
-        return f'Nome: {self.nome} | Saldo: R$ {self.saldo} | Conta poupança com Tx. rendimento de: {self.taxa_rendimento}'
+        return f'Nome: {self.nome:<5} | Saldo: R$ {self.saldo:<5} | Conta poupança com Tx. rendimento de: {self.taxa_rendimento:<5}'
 
 class ContaCorrente(Conta):
-    def __init__(self, titular='', saldo=0, limite_cheque_especial=0):
-        super().__init__(titular, saldo)
+    def __init__(self, nome='', saldo=0, limite_cheque_especial=0):
+        super().__init__(nome, saldo)
         self.limite_cheque_especial = limite_cheque_especial
 
     def exibir_dados(self):
-        return f'Nome: {self.nome} | Saldo: R$ {self.saldo} | Conta corrente com lim. cheque especial de: {self.limite_cheque_especial}'
+        return f'Nome: {self.nome:<5} | Saldo: R$ {self.saldo:<5} | Conta corrente com lim. cheque especial de: R$ {self.limite_cheque_especial:<5}'
+    
+user_conta_poupanca = ContaPoupanca('João', 1200)
+user_conta_corrente = ContaCorrente('Jorge', 900)
+
+print(user_conta_poupanca.exibir_dados()) # <- Antes de atribuir os valores da taxa de rendimento.
+print(user_conta_corrente.exibir_dados()) # <- Antes de atribuir os valores do cheque especial.
+print()
+user_conta_poupanca = ContaPoupanca('João', 1200, '8%')
+user_conta_corrente = ContaCorrente('Jorge', 900, 100)
+print(user_conta_poupanca.exibir_dados()) # <- Depois de atribuir os valores da taxa de rendimento.
+print(user_conta_corrente.exibir_dados()) # <- Antes de atribuir os valores do cheque especial.
+print()
     
