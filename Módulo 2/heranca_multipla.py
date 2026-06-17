@@ -8,12 +8,12 @@ class Animal:
 
 class Mamifero(Animal):
     def amamentar(self):
-        return f'{self.nome} está amamentando'
+        return f'{self.nome}: está amamentando'
 
 
 class Ave(Animal):
     def voar(self):
-        return f'{self.nome} está voando'
+        return f'{self.nome}: está voando'
 
 
 class Morcego(Mamifero, Ave):
@@ -25,3 +25,9 @@ morcego = Morcego(nome='Batman')
 
 # Acessando métodos da classe base 'Animal
 print('Nome do morcego: ', morcego.nome)
+print('Som do morcego:', morcego.emitir_som())
+
+print()
+# Acessando métodos das classes 'Mamifero' e 'Ave'
+print('Morcego amamentando: ', morcego.amamentar())
+print('Morcego voando: ', morcego.voar())
