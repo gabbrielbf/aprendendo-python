@@ -32,3 +32,31 @@ print()
 print('Morcego amamentando: ', morcego.amamentar())
 print('Morcego voando: ', morcego.voar())
 
+# O robô assistente
+
+class Eletrodomestico:
+    def __init__(self):
+        pass
+    
+    def ligar_tomada(self):
+        return f'Conectando na tomada...'
+
+class Computador:
+    def processar_dados(self):
+        return f'Processando informações...'
+    
+class RoboAssistente(Eletrodomestico, Computador):
+    def __init__(self, modelo=''):
+        super().__init__()
+        self.modelo = modelo
+
+    def dizer_ola(self):
+        return f'Olá, sou o modelo {self.modelo}, como posso ajudar?'
+    
+mensagem = RoboAssistente('Eletrolux')
+
+print()
+print(mensagem.ligar_tomada())
+print(mensagem.processar_dados())
+print(mensagem.dizer_ola())
+print()
