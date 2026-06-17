@@ -2,7 +2,7 @@ class Animal:
     def __init__(self, nome):
         self.nome = nome
 
-    def emitir_som():
+    def emitir_som(self):
         pass
 
 
@@ -31,3 +31,4 @@ print()
 # Acessando métodos das classes 'Mamifero' e 'Ave'
 print('Morcego amamentando: ', morcego.amamentar())
 print('Morcego voando: ', morcego.voar())
+

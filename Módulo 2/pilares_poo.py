@@ -146,5 +146,27 @@ c1 = Carro('Chevrolet', 'Celta')
 m1.ligar_veiculo()
 c1.ligar_veiculo()
 
+# Cadastro simples de funcionários
 
-  
+class Funcionario:
+    def __init__(self, nome='', salario=0):
+        self.nome = nome
+        self.salario = salario
+
+    def bater_ponto(self):
+        return f'O(a) Funcionário(a) {self.nome} bateu o ponto!'
+
+
+class Gerente(Funcionario):
+    def entrar_no_sistema(self):
+        return f'O(a) Funcionário(a) {self.nome} entrou no sistema usando o login de ADM'
+    
+
+f1 = Funcionario('João', 1500.00)
+g1 = Gerente('Maria', 3000.00)
+print()
+
+print(f1.bater_ponto())
+print(g1.bater_ponto())
+print(g1.entrar_no_sistema())
+print(f1.entrar_no_sistema()) # <- O funcionário não consegue acessar a função de entrar no sistema pois é uma característica privada do gestor.
