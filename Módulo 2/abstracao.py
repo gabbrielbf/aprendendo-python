@@ -25,3 +25,20 @@ class Carro(Veiculo):
 carro_amarelo = Carro()
 print(carro_amarelo.ligar())
 print(carro_amarelo.desligar())
+
+class Microondas:
+    def __init__(self):
+        # Detalhes complexos internos que o usuário não precisa ver
+        self._voltagem = 220
+        self._magnetron_ligado = False
+
+    def _ligar_componentes_internos(self):
+        # Lógica complexa escondida
+        print("Ativando magnetron... Girando o prato... Emitindo ondas...")
+        self._magnetron_ligado = True
+
+    # ---- ISSO AQUI É A ABSTRAÇÃO ----
+    # O usuário só vê e usa essa função simples!
+    def esquentar_comida(self):
+        self._ligar_componentes_internos()
+        print("Comida esquentada com sucesso! Bip! Bip!")
