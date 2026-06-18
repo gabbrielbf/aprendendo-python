@@ -68,6 +68,7 @@ class TVSAMSUNG(ControlePadrao):
 
 class TVLG(ControlePadrao):
     
+    
     def ligar(self):
         print("Ligando tela OLED... Exibindo logo LG.")
 
