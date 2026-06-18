@@ -45,8 +45,6 @@ class Microondas:
         self._ligar_componentes_internos()
         print("Comida esquentada com sucesso! Bip! Bip!")
 
-from abc import ABC, abstractmethod
-
 
 # Isso aqui é o PADRÃO do controle remoto (a Interface)
 class ControlePadrao(ABC):
@@ -75,4 +73,37 @@ class TVLG(ControlePadrao):
     def mudar_canal(self):
         print("Mudando canal via sistema WebOS.")
 
+""" É passado como obrigatoriedade que todas as subclasses herdeiras da classe usuário tenham
+um nome, uma data de nascimento e um sexo e isso não para por aí... """
+class Usuario(ABC):
+   @abstractmethod
+   def nome(self):
+    pass
+   
+   @abstractmethod
+   def idade(self):
+    pass
+   
+   @abstractmethod
+   def sexo(self):
+    pass
+
+# Ao ter o parâmetro 'Usuário passado' dentro da subclasse 'Aluno' estamos firmando um contrato que OBRIGA a classe aluno
+# Implementar os métodos definidos dentro da classe Usuário. 
+class Aluno(Usuario):
+   def nome(self):
+      return f'Aluno: Marcos'
+   def idade(self):
+      return f'Idade: 34'
+   def sexo(self):
+      return f'Sexo: Masculino'
+
+from rich import inspect
+
+aluno1 = Aluno()
+inspect(aluno1)
+print(aluno1.nome(), aluno1.idade(), aluno1.sexo())
+
+class Professor(Usuario): # <- A classe professor nunca funcionará pois ela não está seguindo o padrão que a classe 'Aluno' seguiu.
+   pass
 
