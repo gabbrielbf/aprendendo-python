@@ -11,6 +11,7 @@ class Veiculo(ABC):
   def desligar(self):
     pass
 
+
 class Carro(Veiculo):
   def __init__(self) -> None:
     pass
@@ -25,6 +26,7 @@ class Carro(Veiculo):
 carro_amarelo = Carro()
 print(carro_amarelo.ligar())
 print(carro_amarelo.desligar())
+
 
 class Microondas:
     def __init__(self):
@@ -42,3 +44,34 @@ class Microondas:
     def esquentar_comida(self):
         self._ligar_componentes_internos()
         print("Comida esquentada com sucesso! Bip! Bip!")
+
+from abc import ABC, abstractmethod
+
+
+# Isso aqui é o PADRÃO do controle remoto (a Interface)
+class ControlePadrao(ABC):
+    @abstractmethod
+    def ligar(self):
+        pass
+
+    @abstractmethod
+    def mudar_canal(self):
+        pass
+
+# Agora, qualquer TV criada PRECISA seguir esse padrão
+class TVSAMSUNG(ControlePadrao):
+    def ligar(self):
+        print("Ligando tela QLED... Exibindo logo Samsung.")
+
+    def mudar_canal(self):
+        print("Mudando canal via sistema Tizen.")
+
+class TVLG(ControlePadrao):
+    
+    def ligar(self):
+        print("Ligando tela OLED... Exibindo logo LG.")
+
+    def mudar_canal(self):
+        print("Mudando canal via sistema WebOS.")
+
+
