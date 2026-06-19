@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+# Sistema de formatação DOCS
 class ModeloDocs(ABC):
     def __init__(self, titulo='', autor='', data=''):
         self.titulo = titulo
