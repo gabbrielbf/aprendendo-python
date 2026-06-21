@@ -2,10 +2,7 @@
 
 from abc import ABC, abstractmethod
 
-class Poligono(ABC):
-    def __init__(self, qtd_lados):
-        self.qtd_lados = qtd_lados
-
+class Poligonos(ABC):
     @abstractmethod
     def perimetro(self):
         pass
@@ -15,29 +12,24 @@ class Poligono(ABC):
         pass
 
 
-class Quadrado(Poligono):
-    def __init__(self, qtd_lados):
-        super().__init__(qtd_lados)
-        self.qtd_lados = qtd_lados
+class Quadrado(Poligonos):
+    def __init__(self, lado):
+        self.lado = lado 
 
-    def perimetro(self, qtd_lados):
-        Lados = qtd_lados * 4
-        return Lados
+    def perimetro(self):
+        return self.lado * 4
     
-    def area(self, qtd_lados):
-        Area = qtd_lados * qtd_lados
-        return Area
+    def area(self):
+        return self.lado * self.lado
 
 
-class Cicrulo(Poligono):
-    def __init__(self, qtd_lados, raio):
-        super().__init__(qtd_lados)
+class Circulo(Poligonos):
+    def __init__(self, raio):
         self.raio = raio
+        self.pi = 3.14 
 
     def perimetro(self):
-        Circulo = (2 * 3.14) * self.raio
-        return Circulo
+        return 2 * self.pi * self.raio
     
     def area(self):
-        Area = 3.14 * self.raio**2
-        return Area
+        return self.pi * (self.raio * self.raio)

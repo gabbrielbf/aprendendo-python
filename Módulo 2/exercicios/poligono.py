@@ -2,7 +2,7 @@ from rich import print, inspect
 from classes import *
 
 def main():
-    polig = Cicrulo(12)
+    polig = Circulo(int(input('Digite um valor: ')))
 
     print(f'Perimetro: {polig.perimetro():.1f}')
     print(f'Area: {polig.area():.1f}')
