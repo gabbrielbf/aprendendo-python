@@ -113,44 +113,38 @@ class LeiteQuente(BebidaQuente):
     
 # Classes dos calculos de frete
 class Transporte(ABC):
-    def distancia(self):
-        pass
+    def __init__(self, distancia):
+        self.distancia = distancia
+        return 
 
     @abstractmethod
     def calc_frete(self):
         pass
 
+""" Perceba que nas classes a baixo não definiremos o '__init__' PRESENTE na classe 'Transporte', não que isso seja uma regra até porquê
+se colocarmos os inits nas classes filhas abaixo o código funcionará da mesma maneira. Porém a falta de presença desse '__init__' nos ensina
+uma coisa importante na execução do programa. O código começa a rodar; Ele verá que a classe moto tem uma instância (x) dentro dela mas 
+quando ele entra no bloco da classe percebe que ela não possui um '__init__', sendo assim vai na classe mãe buscar esse '__init__' e lá o
+encontrará, caso não tivessemos '__init__' na classe mãe ele nos daria um erro. """
 
 class Moto(Transporte):
-    def __init__(self, distancia):
-        self.distancia = distancia
-        return
-    
     def calc_frete(self):
         self.fator = 0.5
         self.frete = (self.distancia * self.fator)
         return f'{self.frete:.2f}'
 
   
-class Caminhao(Transporte):
-    def __init__(self, distancia):
-        self.distancia = distancia
-        return
-    
+class Caminhao(Transporte):    
     def calc_frete(self):
         self.fator = 1.2
         if self.distancia >= 50:
             self.frete = (self.distancia * self.fator)
             return f'{self.frete:.2f}'
         else:
-            return f'A corrida tem menos de 50Km. '
+            return f'Caminhões fazem corridas acima de 50Km '
 
 
 class Drone(Transporte):
-    def __init__(self, distancia):
-        self.distancia = distancia
-        return
-
     def calc_frete(self):
         self.fator = 9.5
         if (self.distancia > 0 and 
@@ -158,4 +152,4 @@ class Drone(Transporte):
             self.frete = (self.distancia * self.fator)
             return f'{self.frete:.2f}'
         else:
-            return f'O drone não tem bateria para viagens longas! '
+            return f'O drone não tem bateria para viagens acima de [{self.distancia}Km], o limite é 10. '
