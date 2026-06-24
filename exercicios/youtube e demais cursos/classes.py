@@ -123,9 +123,9 @@ class Transporte(ABC):
 
 """ Perceba que nas classes a baixo não definiremos o '__init__' PRESENTE na classe 'Transporte', não que isso seja uma regra até porquê
 se colocarmos os inits nas classes filhas abaixo o código funcionará da mesma maneira. Porém a falta de presença desse '__init__' nos ensina
-uma coisa importante na execução do programa. O código começa a rodar; Ele verá que a classe moto tem uma instância (x) dentro dela mas 
+uma coisa importante na execução do programa. O código começa a rodar; Ele verá que a classe moto tem um argumento (x) dentro do objeto instânciado mas 
 quando ele entra no bloco da classe percebe que ela não possui um '__init__', sendo assim vai na classe mãe buscar esse '__init__' e lá o
-encontrará, caso não tivessemos '__init__' na classe mãe ele nos daria um erro. """
+encontrará. Caso não tivessemos '__init__' na classe mãe ele nos daria um erro. """
 
 class Moto(Transporte):
     def calc_frete(self):
@@ -134,7 +134,7 @@ class Moto(Transporte):
         return f'{self.frete:.2f}'
 
   
-class Caminhao(Transporte):    
+class Caminhao(Transporte):
     def calc_frete(self):
         self.fator = 1.2
         if self.distancia >= 50:
@@ -153,3 +153,5 @@ class Drone(Transporte):
             return f'{self.frete:.2f}'
         else:
             return f'O drone não tem bateria para viagens acima de [{self.distancia}Km], o limite é 10. '
+        
+# Calcular salário de diferentes funcionários
