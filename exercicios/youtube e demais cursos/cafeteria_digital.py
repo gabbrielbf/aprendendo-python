@@ -1,4 +1,4 @@
-from cafeteira import *
+from classes import *
 
 lista_bebidas = ['Cafe', 'Cha', 'Leite']
 
