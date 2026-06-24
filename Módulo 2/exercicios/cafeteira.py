@@ -1,16 +1,9 @@
 from abc import ABC, abstractmethod
 
 class BebidaQuente(ABC):
-    def preparar(self, nome_bebida=''):
-        self.nome_bebida = nome_bebida
-        print('\n--- Iniciando Preparo ---')
-        self.ferver_agua()
-        self.misturar()
-        self.servir()
-        print('--- Bebida Pronta ---\n')
-        return
 
-    def ferver_agua(self):
+    def preparar(self):
+        print('\n--- Iniciando Preparo ---')
         print(f'1. Fervendo água para beber ({self.nome_bebida})!')
         return
     
@@ -20,9 +13,20 @@ class BebidaQuente(ABC):
 
     @abstractmethod
     def servir(self):
+        print('--- Bebida pronta ---\n')
         pass
 
 class Cafe(BebidaQuente):
+    def __init__(self, nome_bebida=''):
+        self.nome_bebida = nome_bebida
+        return
+    
+    def preparar(self):
+        super().preparar()
+        self.misturar()
+        self.servir()
+        return 
+
     def misturar(self):
         print(f'2. Passando água quente dentre o café em pó.')
         return super().misturar()
@@ -32,6 +36,15 @@ class Cafe(BebidaQuente):
         return super().servir()
     
 class Cha(BebidaQuente):
+    def __init__(self, nome_bebida=''):
+        self.nome_bebida = nome_bebida
+        return
+    
+    def preparar(self):
+        super().preparar()
+        self.misturar()
+        self.servir()
+        return 
 
     def misturar(self):
         print(f'2. Derramando água encima de sachê.')
@@ -42,6 +55,16 @@ class Cha(BebidaQuente):
         return super().servir()
 
 class LeiteQuente(BebidaQuente):
+    def __init__(self, nome_bebida=''):
+        self.nome_bebida = nome_bebida
+        return
+    
+    def preparar(self):
+        super().preparar()
+        self.misturar()
+        self.servir()
+        return 
+
     def misturar(self):
         print(f'2. Misturando com colher de pau.')
         return super().misturar()
