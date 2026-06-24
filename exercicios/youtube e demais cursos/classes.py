@@ -51,6 +51,7 @@ class BebidaQuente(ABC):
         print('--- Bebida pronta ---\n')
         pass
 
+
 class Cafe(BebidaQuente):
     def __init__(self, nome_bebida=''):
         self.nome_bebida = nome_bebida
@@ -69,7 +70,8 @@ class Cafe(BebidaQuente):
     def servir(self):
         print(f'3. Servindo em xícara de vidro')
         return super().servir()
-    
+
+
 class Cha(BebidaQuente):
     def __init__(self, nome_bebida=''):
         self.nome_bebida = nome_bebida
@@ -88,6 +90,7 @@ class Cha(BebidaQuente):
     def servir(self):
         print(f'3. Servindo em xícara de porcelana')
         return super().servir()
+
 
 class LeiteQuente(BebidaQuente):
     def __init__(self, nome_bebida=''):
@@ -111,20 +114,48 @@ class LeiteQuente(BebidaQuente):
 # Classes dos calculos de frete
 class Transporte(ABC):
     def distancia(self):
-        return
-
-    def frete(self):
-        return
+        pass
 
     @abstractmethod
     def calc_frete(self):
         pass
 
+
 class Moto(Transporte):
-    def __init__(self):
-        
+    def __init__(self, distancia):
+        self.distancia = distancia
         return
     
     def calc_frete(self):
-        
-        return 
+        self.fator = 0.5
+        self.frete = (self.distancia * self.fator)
+        return f'{self.frete:.2f}'
+
+  
+class Caminhao(Transporte):
+    def __init__(self, distancia):
+        self.distancia = distancia
+        return
+    
+    def calc_frete(self):
+        self.fator = 1.2
+        if self.distancia >= 50:
+            self.frete = (self.distancia * self.fator)
+            return f'{self.frete:.2f}'
+        else:
+            return f'A corrida tem menos de 50Km. '
+
+
+class Drone(Transporte):
+    def __init__(self, distancia):
+        self.distancia = distancia
+        return
+
+    def calc_frete(self):
+        self.fator = 9.5
+        if (self.distancia > 0 and 
+            self.distancia <= 10):
+            self.frete = (self.distancia * self.fator)
+            return f'{self.frete:.2f}'
+        else:
+            return f'O drone não tem bateria para viagens longas! '
