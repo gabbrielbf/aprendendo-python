@@ -155,3 +155,25 @@ class Drone(Transporte):
             return f'O drone não tem bateria para viagens acima de [{self.distancia}Km], o limite é 10. '
         
 # Calcular salário de diferentes funcionários
+
+class Funcionario(ABC):
+    def __init__(self, nome, sal_bruto, salario):
+        self.nome = nome
+        self.sal_bruto = sal_bruto
+        self.salario = salario
+        self.salario_min = 1612
+        self.inss = 7.5
+        return
+    
+    @abstractmethod
+    def calc_salario(self):
+        pass
+
+    def analisar_salario(self):
+        pass
+
+class Pedreiro(Funcionario):
+    pass
+
+class Professor(Funcionario):
+    pass
