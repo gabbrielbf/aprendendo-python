@@ -202,3 +202,25 @@ class Relatorio:
         funcionario.calc_salario()
         texto = funcionario.analisar_salario()
         rprint(Panel(texto, title="Análise de Salário", border_style="white"))
+
+# Exercicio 1 - Sistema simples de pagamento
+
+class MetodoPagamento(ABC):
+    
+    @abstractmethod
+    def processar_pagamento(self, valor):
+        pass
+
+class CartaoCredito(MetodoPagamento):
+    def processar_pagamento(self, valor):
+        self.valor = valor
+        return f'Processando valor de: R${self.valor:.2f} no crédito.'
+
+class Pix(MetodoPagamento):
+    def processar_pagamento(self, valor):
+        self.valor = valor
+        return f'Processando valor de: R${self.valor:.2f} no PIX.'
+    
+
+# Exercicio 2 - Sistema simples de notificações
+
