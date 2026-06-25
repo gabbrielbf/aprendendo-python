@@ -224,3 +224,29 @@ class Pix(MetodoPagamento):
 
 # Exercicio 2 - Sistema simples de notificações
 
+class Notificador(ABC):
+    
+    @abstractmethod
+    def enviar_mensagem(self, mensagem):
+        pass
+
+
+class Email(Notificador):
+    def __init__(self, endereco_email):
+        self.endereco_email = endereco_email
+        return
+
+    def enviar_mensagem(self, mensagem):
+        self.mensagem = mensagem
+        return f'Enviando E-mail para: [{self.endereco_email}] -> {self.mensagem}'
+  
+
+class SMS(Notificador):
+    def __init__(self, numero_telefone):
+        self.numero_telefone = numero_telefone
+        return
+    
+    def enviar_mensagem(self, mensagem):
+        self.mensagem = mensagem
+        return f'Enviando SMS para: [{self.numero_telefone}] -> {self.mensagem}'
+        
