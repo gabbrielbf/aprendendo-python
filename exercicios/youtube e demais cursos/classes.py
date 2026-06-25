@@ -157,7 +157,6 @@ class Drone(Transporte):
             return f'O drone não tem bateria para viagens acima de [{self.distancia}Km], o limite é 10. '
         
 # Calcular salário de diferentes funcionários
-
 class Funcionario(ABC):
     def __init__(self, nome):
         self.nome = nome 
@@ -204,26 +203,25 @@ class Relatorio:
         rprint(Panel(texto, title="Análise de Salário", border_style="white"))
 
 # Exercicio 1 - Sistema simples de pagamento
-
 class MetodoPagamento(ABC):
     
     @abstractmethod
     def processar_pagamento(self, valor):
         pass
 
+
 class CartaoCredito(MetodoPagamento):
     def processar_pagamento(self, valor):
         self.valor = valor
         return f'Processando valor de: R${self.valor:.2f} no crédito.'
+
 
 class Pix(MetodoPagamento):
     def processar_pagamento(self, valor):
         self.valor = valor
         return f'Processando valor de: R${self.valor:.2f} no PIX.'
     
-
 # Exercicio 2 - Sistema simples de notificações
-
 class Notificador(ABC):
     
     @abstractmethod
@@ -237,8 +235,7 @@ class Email(Notificador):
         return
 
     def enviar_mensagem(self, mensagem):
-        self.mensagem = mensagem
-        return f'Enviando E-mail para: [{self.endereco_email}] -> {self.mensagem}'
+        return f'Enviando E-mail para: [{self.endereco_email}] -> {mensagem}'
   
 
 class SMS(Notificador):
@@ -247,6 +244,5 @@ class SMS(Notificador):
         return
     
     def enviar_mensagem(self, mensagem):
-        self.mensagem = mensagem
-        return f'Enviando SMS para: [{self.numero_telefone}] -> {self.mensagem}'
+        return f'Enviando SMS para: [{self.numero_telefone}] -> {mensagem}'
         
