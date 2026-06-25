@@ -157,10 +157,8 @@ class Drone(Transporte):
 # Calcular salário de diferentes funcionários
 
 class Funcionario(ABC):
-    def __init__(self, nome, sal_bruto, salario):
-        self.nome = nome
-        self.sal_bruto = sal_bruto
-        self.salario = salario
+    def __init__(self, nome):
+        self.nome = nome 
         self.salario_min = 1612
         self.inss = 7.5
         return
@@ -170,10 +168,30 @@ class Funcionario(ABC):
         pass
 
     def analisar_salario(self):
-        pass
+        self.qtd_salarios = (self.salario / self.salario_min)
+        print(f'O salário {self.salario:.2f} corresponde a {self.qtd_salarios:.1f} salários mínimos.')
+        return
 
 class Pedreiro(Funcionario):
-    pass
+    def __init__(self, nome, val_hora, horas_trab):
+        super().__init__(nome)
+        self.val_hora = val_hora
+        self.horas_trab = horas_trab
+    
+    def calc_salario(self):
+        self.salario = (self.val_hora * self.horas_trab)
+        print(f'O valor do salário do pedreiro [{self.nome}] é: {self.salario:.2f}')
+        return 
+
 
 class Professor(Funcionario):
-    pass
+    def __init__(self, nome, sal_bruto):
+        super().__init__(nome)
+        self.sal_bruto = sal_bruto
+    
+    def calc_salario(self):
+        self.sal_liq = self.sal_bruto - (self.sal_bruto * (self.inss / 100))
+        self.salario = self.sal_liq
+        print(f'O valor do salário do professor [{self.nome}] é: {self.salario:.2f}')
+        return
+
