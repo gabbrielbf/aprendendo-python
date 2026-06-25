@@ -1,6 +1,8 @@
 # Vou importar as classes daqui, para deixar o código organizado
 
 from abc import ABC, abstractmethod
+from rich.panel import Panel
+from rich import print as rprint
 
 # Classes dos poligonos
 class Poligonos(ABC):
@@ -168,9 +170,8 @@ class Funcionario(ABC):
         pass
 
     def analisar_salario(self):
-        self.qtd_salarios = (self.salario / self.salario_min)
-        print(f'O salário {self.salario:.2f} corresponde a {self.qtd_salarios:.1f} salários mínimos.')
-        return
+        qtd_salarios = self.salario / self.salario_min
+        return f"O salário de {self.nome} ({self.__class__.__name__}) é de\nR${self.salario:.2f} e corresponde a {qtd_salarios:.1f} salários mínimos."
 
 
 class Pedreiro(Funcionario):
@@ -181,9 +182,8 @@ class Pedreiro(Funcionario):
     
     def calc_salario(self):
         self.salario = (self.val_hora * self.horas_trab)
-        print(f'O valor do salário do pedreiro [{self.nome}] é: {self.salario:.2f}')
-        return 
-
+        return f'O valor do salário do pedreiro [{self.nome}] é: {self.salario:.2f}'
+        
 
 class Professor(Funcionario):
     def __init__(self, nome, sal_bruto):
@@ -193,6 +193,12 @@ class Professor(Funcionario):
     def calc_salario(self):
         self.sal_liq = self.sal_bruto - (self.sal_bruto * (self.inss / 100))
         self.salario = self.sal_liq
-        print(f'O valor do salário do professor [{self.nome}] é: {self.salario:.2f}')
-        return
+        return f'O valor do salário do professor [{self.nome}] é: {self.salario:.2f}'
+        
 
+class Relatorio:
+    @staticmethod
+    def exibir(funcionario):
+        funcionario.calc_salario()
+        texto = funcionario.analisar_salario()
+        rprint(Panel(texto, title="Análise de Salário", border_style="white"))

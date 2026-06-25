@@ -1,15 +1,15 @@
 from classes import *
 from rich import inspect
+from rich.panel import Panel
+from rich import print as rprint
 
 def main():
     print()
     f1 = Pedreiro('Cleber', 12, 200)
-    f1.calc_salario()
-    f1.analisar_salario()
+    Relatorio.exibir(f1)
  
     f2 =  Professor('Jorge', 8000)
-    f2.calc_salario()
-    f2.analisar_salario()
+    Relatorio.exibir(f2)
     print()
     return
 
