@@ -172,6 +172,7 @@ class Funcionario(ABC):
         print(f'O salário {self.salario:.2f} corresponde a {self.qtd_salarios:.1f} salários mínimos.')
         return
 
+
 class Pedreiro(Funcionario):
     def __init__(self, nome, val_hora, horas_trab):
         super().__init__(nome)
