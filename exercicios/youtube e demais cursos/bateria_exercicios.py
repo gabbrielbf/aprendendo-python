@@ -23,3 +23,14 @@ def disparar_notificacao(notificador, mensagem):
 
 disparar_notificacao(notificador1, mensagem1)
 disparar_notificacao(notificador2, mensagem2)
+
+# Exercicio 3 - Sistema simples de relatórios
+financeiro1 = RelatorioFinanceiro()
+vendas1 = RelatorioVendas()
+
+def chamar_relatorio():
+    return
+
+print()
+chamar_relatorio()
+print()

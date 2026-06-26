@@ -225,7 +225,7 @@ class Pix(MetodoPagamento):
 class Notificador(ABC):
     
     @abstractmethod
-    def enviar_mensagem(self, mensagem):
+    def enviar_mensagem(mensagem):
         pass
 
 
@@ -245,4 +245,49 @@ class SMS(Notificador):
     
     def enviar_mensagem(self, mensagem):
         return f'Enviando SMS para: [{self.numero_telefone}] -> {mensagem}'
-        
+    
+
+# Exercicio 3 - Sistema simples de relatórios
+
+# Classes abstratas
+class Relatorio(ABC):
+
+    @abstractmethod
+    def gerar_conteudo(dados):
+        pass
+
+
+class Exportador(ABC):
+
+    @abstractmethod
+    def exportar_conteúdo(conteudo):
+        pass
+
+# Classes concretas
+
+class ExportarPDF(Exportador):
+    def exportar_conteúdo(conteudo):
+        PDF_exportado = f'Exportando para PDF: [{conteudo}]'
+        return PDF_exportado
+
+
+class ExportarTexto(Exportador):
+    def exportar_conteúdo(conteudo):
+        TXT_exportado = f'Exportando para TXT: [{conteudo}]'
+        return TXT_exportado
+
+
+# Classes Objetos
+class RelatorioFinanceiro(Relatorio):
+
+    def gerar_conteudo(self, dados):
+        dados_financeiros = f'Tivemos R${dados:.2f} de lucro este mês!'
+        return dados_financeiros
+
+
+class RelatorioVendas(Relatorio):
+    def gerar_conteudo(self, dados):
+        dados_vendas = f'Tivemos {dados} vendas este mês!'
+        return dados_vendas
+
+
