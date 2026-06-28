@@ -28,9 +28,16 @@ disparar_notificacao(notificador2, mensagem2)
 financeiro1 = RelatorioFinanceiro()
 vendas1 = RelatorioVendas()
 
-def chamar_relatorio():
-    return
+exportar_pdf = ExportarPDF()
+exportar_txt = ExportarTXT()
 
-print()
-chamar_relatorio()
-print()
+def chamar_relatorio(val1, val2):
+
+    relat_finan = financeiro1.gerar_conteudo(val1).replace('.', ',')
+    relat_vend = vendas1.gerar_conteudo(val2)
+
+    print(exportar_pdf.exportar_conteúdo(relat_finan))
+    print(exportar_txt.exportar_conteúdo(relat_vend))
+    return 
+
+chamar_relatorio(500, 50)

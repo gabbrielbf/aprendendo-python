@@ -248,7 +248,6 @@ class SMS(Notificador):
     
 
 # Exercicio 3 - Sistema simples de relatórios
-
 # Classes abstratas
 class Relatorio(ABC):
 
@@ -264,22 +263,21 @@ class Exportador(ABC):
         pass
 
 # Classes concretas
-
 class ExportarPDF(Exportador):
-    def exportar_conteúdo(conteudo):
+    def exportar_conteúdo(self, conteudo):
         PDF_exportado = f'Exportando para PDF: [{conteudo}]'
         return PDF_exportado
 
 
-class ExportarTexto(Exportador):
-    def exportar_conteúdo(conteudo):
+class ExportarTXT(Exportador):
+    def exportar_conteúdo(self, conteudo):
         TXT_exportado = f'Exportando para TXT: [{conteudo}]'
         return TXT_exportado
 
 
 # Classes Objetos
 class RelatorioFinanceiro(Relatorio):
-
+    
     def gerar_conteudo(self, dados):
         dados_financeiros = f'Tivemos R${dados:.2f} de lucro este mês!'
         return dados_financeiros
