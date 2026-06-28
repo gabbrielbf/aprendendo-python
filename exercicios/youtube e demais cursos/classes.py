@@ -289,3 +289,29 @@ class RelatorioVendas(Relatorio):
         return dados_vendas
 
 
+# RPG Simples
+class Personagem(ABC):
+    def __init__(self, nome, vida=100, golpes=0):
+        self.nome = nome
+        self.vida = vida
+        self.golpes = golpes
+        pass
+
+    def atacar(self, alvo, forca):
+        pass
+
+    def receber_dano(self, dano):
+        pass
+
+    @abstractmethod
+    def curar(self):
+        pass
+
+class Guerreiro(Personagem):
+    pass
+
+
+class Mago(Personagem):
+    pass
+
+
