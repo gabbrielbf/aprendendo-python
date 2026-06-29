@@ -291,7 +291,6 @@ class RelatorioVendas(Relatorio):
 
 # RPG Simples
 import random
-
 class Personagem(ABC):
     def __init__(self, nome, vida=100):
         self.nome = nome
@@ -302,33 +301,30 @@ class Personagem(ABC):
 
     def atacar(self, alvo, forca):
         self.alvo = alvo
-        self.forca = random.choice(0, forca)
+        self.forca = random.randint(0, forca)
+        dano = self.forca
+        self.receber_dano(dano)
         return
 
-    def receber_dano(self, dano): 
+    def receber_dano(self, dano):
         dano = self.forca
-        return dano
+        print(f'O jogador {self.nome} atacou o {type(self.alvo).__name__} com {self.golpes} e causou {dano} pontos de dano!')
+        return 
 
     @abstractmethod
     def curar(self):
         pass
 
 class Guerreiro(Personagem):
-    def receber_dano(self, dano):
-        print(f'O jogador {self.nome} atacou com {self.golpes} e causou {dano} pontos de dano!')
-        return
     
     def curar(self):
-        print(f'O Guerreiro {self.nome} se curou com ataduras e recuperou {random.randint(0,100)} pontos de vida!')
+        print(f'O Guerreiro {self.nome} se curou com ataduras e recuperou {random.randint(0, 100)} pontos de vida!')
         return
 
 class Mago(Personagem):
-    def receber_dano(self, dano):
-        print(f'O jogador {self.nome} atacou com {self.golpes} e causou {dano} pontos de dano!')
-        return
-    
+
     def curar(self):
-        print(f'O Mago {self.nome} se curou uma poção e recuperou {random.randint(0,100)} pontos de vida!')
+        print(f'O Mago {self.nome} se curou com uma poção e recuperou {random.randint(0, 100)} pontos de vida!')
         return
 
 
