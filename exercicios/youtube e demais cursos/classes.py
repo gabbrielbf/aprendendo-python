@@ -335,7 +335,7 @@ class ContaBancaria:
         self.id = id
         self.nome = nome
         self.saldo = saldo
-        print(f'Conta N° {self.id} criada com sucesso\nSaldo atual é de: R${self.saldo:,.2f}')
+        print(f'Conta N° {self.id} criada com sucesso\nSaldo atual é de: R${self.saldo:,.2f}\n')
     
     def __str__(self):
         return f'A conta {self.id} de {self.nome} tem {self.saldo:,.2f} de saldo.'
