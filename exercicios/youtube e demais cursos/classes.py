@@ -346,7 +346,10 @@ class ContaBancaria:
         return
 
     def sacar(self, valor):
-        self.saldo -= valor
-        print(f'Saque de R${valor:,.2f} autorizado na conta {self.id}')
+        if valor > self.saldo:
+            print(f'SAQUE de {valor} na conta {self.id} NEGADO! Saldo insuficiente: {self.saldo}')
+        else:
+            self.saldo -= valor
+            print(f'Saque de R${valor:,.2f} autorizado na conta {self.id}')
         return
         
