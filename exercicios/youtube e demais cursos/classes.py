@@ -434,15 +434,12 @@ class Diario:
     def anotar_algo(self, msg): # <- Método de adição aos segredos do diário
         self.__segredos.append(msg)
         return
-    
+
     def ler_conteudo(self, senha=input('Digite a senha: ')): # <- Método getter, para obter o conteúdo através da senha
         if (senha == self.__senha):
             print()
+            print('Diário liberado!')
             for indice in range(0, len(self.__segredos)):
                 print(f'Segredo N°{indice + 1}: {self.__segredos[indice]}')
             print()
-        else:
-            print()
-            print(f'A senha [{senha}] não é a senha do diário!\nTente novamente.')
-            print()
-        return
+        raise PermissionError(f'A senha [{senha}] não é a senha do diário!\nTente novamente.')
