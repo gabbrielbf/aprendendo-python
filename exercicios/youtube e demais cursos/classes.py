@@ -389,3 +389,22 @@ class Avaliacao:
         return
 
 
+class Termostato:
+    def __init__(self):
+        self.__temperatura = 24.0
+        return
+    
+    @property
+    def temperatura(self, temperatura):
+        temperaturas_aceitas = [16.0, 16.5, 17.0, 17.5, 18.0, 18.5, 19.0, 19.5, 20.0, 
+                                20.5, 21.0, 21.5, 22.0, 22.5, 23.0, 23.5, 24.0, 24.5,
+                                25.0, 25.5, 26.0, 26.5, 27.0, 27.5, 28.0, 28.5, 29.0,
+                                29.5, 30.0]
+        if (temperatura not in temperaturas_aceitas):
+            print(f'Temperatura inválida! Escolha um valor dentre: [{temperaturas_aceitas[0]} e {temperaturas_aceitas[-1]}]')
+        else:
+            self.__temperatura = temperatura
+        return self.__temperatura
+    
+    def ftemperatura(self):
+        return f'Temperatura atual do termometro: {self.__temperatura}°C'
