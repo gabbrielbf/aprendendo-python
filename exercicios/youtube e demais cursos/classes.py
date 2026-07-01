@@ -355,4 +355,22 @@ class ContaBancaria:
             self.__saldo -= valor
             print(f'Saque de R${valor:,.2f} autorizado na conta {self.id}')
         return
-        
+
+
+# Sistema de avaliacao para treinar acesso de dados em encapsulamento
+class Avaliacao:
+    def __init__(self, nome, disciplina, nota):
+        self.nome = nome
+        self.disciplina = disciplina
+        self._nota = nota # <- Atributo protegido
+        return
+    
+    def get_nota(self): # <- Métodos setters (acessor de valor)
+        return self._nota
+
+    def set_nota(self, valor): # <- Métodos setters (acessor de valor OU alterar valor)
+        if 0 <= valor <= 10:
+            self._nota = valor
+        else:
+            print('Nota inválida!')
+        return
