@@ -406,11 +406,19 @@ class Termostato:
                                 25.0, 25.5, 26.0, 26.5, 27.0, 27.5, 28.0, 28.5, 29.0,
                                 29.5, 30.0]
         
-        if (temperatura not in temperaturas_aceitas):
+        if (temperatura > temperaturas_aceitas[-1]):
+            self.temperatura = temperaturas_aceitas[-1]
             raise ValueError (f'A temperatura [{temperatura}°] não é válida! Escolha um valor dentre: [{temperaturas_aceitas[0]}° e {temperaturas_aceitas[-1]}°]')
+        
+        elif (temperatura < temperaturas_aceitas[0]):
+            self.temperatura = temperaturas_aceitas[0]
+            raise ValueError (f'A temperatura [{temperatura}°] não é válida! Escolha um valor dentre: [{temperaturas_aceitas[0]}° e {temperaturas_aceitas[-1]}°]')
+        
+        elif (temperatura not in temperaturas_aceitas):
+            raise ValueError (f'A temperatura [{temperatura}°] não é válida! Escolha um valor dentre: [{temperaturas_aceitas[0]}° e {temperaturas_aceitas[-1]}°]')
+        
         else:
             self.__temperatura = float(temperatura)
-        return self.__temperatura
     
     @temperatura.getter
     def ftemperatura(self):
