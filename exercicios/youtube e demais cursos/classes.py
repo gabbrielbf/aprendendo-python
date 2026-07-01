@@ -332,24 +332,27 @@ class Mago(Personagem):
 class ContaBancaria:
 
     def __init__(self, id, nome, saldo=0):
-        self.id = id
-        self.nome = nome
-        self.saldo = saldo
-        print(f'Conta N° {self.id} criada com sucesso\nSaldo atual é de: R${self.saldo:,.2f}\n')
+        self.id = id # atrubuto público (+)
+        self._titular = nome # atributo protegido (#)
+        self.__saldo = saldo # atributo privado (-)
+        print(f'Conta N° {self.id} criada com sucesso\nSaldo atual é de: R${self.__saldo:,.2f}\n')
     
     def __str__(self):
-        return f'A conta {self.id} de {self.nome} tem {self.saldo:,.2f} de saldo.'
+        # return f'A conta {self.id} de {self.titular} tem {self.saldo:,.2f} de saldo.'
+        return f'Estado atual da conta: {self.__dict__}'
     
     def depositar(self, valor):
-        self.saldo += valor
+        valor = abs(valor)
+        self.__saldo += valor
         print(f'Depósito de R${valor:,.2f} autorizado na conta {self.id}')
         return
 
     def sacar(self, valor):
-        if valor > self.saldo:
-            print(f'SAQUE de {valor} na conta {self.id} NEGADO! Saldo insuficiente: {self.saldo}')
+        valor = abs(valor)
+        if valor > self.__saldo:
+            print(f'SAQUE de {valor} na conta {self.id} NEGADO! Saldo insuficiente: {self.__saldo}')
         else:
-            self.saldo -= valor
+            self.__saldo -= valor
             print(f'Saque de R${valor:,.2f} autorizado na conta {self.id}')
         return
         
