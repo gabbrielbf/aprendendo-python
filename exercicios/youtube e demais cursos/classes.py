@@ -424,3 +424,25 @@ class Termostato:
     def ftemperatura(self):
         print(f'Temperatura atual do termometro: {self.__temperatura}°C')
         return 
+
+
+class Diario:
+    def __init__(self):
+        self.__segredos = []
+        self.__senha = 'MinhaSenha123'
+
+    def anotar_algo(self, msg): # <- Método de adição aos segredos do diário
+        self.__segredos.append(msg)
+        return
+    
+    def ler_conteudo(self, senha=input('Digite a senha: ')): # <- Método getter, para obter o conteúdo através da senha
+        if (senha == self.__senha):
+            print()
+            for indice in range(0, len(self.__segredos)):
+                print(f'Segredo N°{indice + 1}: {self.__segredos[indice]}')
+            print()
+        else:
+            print()
+            print(f'A senha [{senha}] não é a senha do diário!\nTente novamente.')
+            print()
+        return
