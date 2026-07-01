@@ -365,12 +365,27 @@ class Avaliacao:
         self._nota = nota # <- Atributo protegido
         return
     
-    def get_nota(self): # <- Métodos setters (acessor de valor)
-        return self._nota
+    # def get_nota(self): # <- Métodos getters (acessor de valor)
+    #     return self._nota
 
-    def set_nota(self, valor): # <- Métodos setters (acessor de valor OU alterar valor)
+    # def set_nota(self, valor): # <- Métodos setters (acessor de valor OU alterar valor)
+    #     if 0 <= valor <= 10:
+    #         self._nota = valor
+    #     else:
+    #         print('Nota inválida!')
+    #     return
+    
+    # Trabalhando coma atributos válidaveis
+    @property
+    def nota(self):
+        return self._nota
+    
+    @nota.setter
+    def nota(self, valor):
         if 0 <= valor <= 10:
             self._nota = valor
         else:
             print('Nota inválida!')
         return
+
+
