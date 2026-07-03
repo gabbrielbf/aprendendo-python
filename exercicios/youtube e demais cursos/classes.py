@@ -446,12 +446,7 @@ class Diario:
 
 
 class Retangulo:
-    def __init__(self, base, altura):
-        self._base = base
-        self._altura = altura
-        self._area = base * altura
-        return
-    
+
     @property
     def base(self):
         self._base
@@ -472,25 +467,29 @@ class Retangulo:
     @base.setter
     def base(self, base):
         if base > 0:
-            return self.base
+            self._base = base
+            return self._base
         raise ValueError('O valor digitado é negativo!')
     
     @altura.setter
     def altura(self, altura):
         if altura > 0:
-            return self.altura
+            self._altura = altura
+            return self._altura
         raise ValueError('O valor digitado é negativo!')
     
     @area.getter
     def area(self):
-        self._area = self._base * self._altura
-        return self.area
+        return self._base * self._altura
     
     @medidas.setter
     def medidas(self, base, altura):
+        self._medidas = (base, altura)
         if base > 0 and altura > 0:
-            self._medidas = base * altura
+            self._area = base * altura
         raise ValueError('O valor digitado é negativo!')
-        
-
+    
+    @medidas.getter
+    def medidas(self):
+        return f'Base = {self._base}\nAltura = {self._altura}\nÁrea = {self._area:.2f}'
     
