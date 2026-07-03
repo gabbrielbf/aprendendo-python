@@ -443,3 +443,54 @@ class Diario:
                 print(f'Segredo N°{indice + 1}: {self.__segredos[indice]}')
             print()
         raise PermissionError(f'A senha [{senha}] não é a senha do diário!\nTente novamente.')
+
+
+class Retangulo:
+    def __init__(self, base, altura):
+        self._base = base
+        self._altura = altura
+        self._area = base * altura
+        return
+    
+    @property
+    def base(self):
+        self._base
+        return
+    @property
+    def altura(self):
+        self._altura
+        return
+    @property
+    def area(self):
+        self._area
+        return
+    @property
+    def medidas(self):
+        self._medidas
+        return
+    
+    @base.setter
+    def base(self, base):
+        if base > 0:
+            return self.base
+        raise ValueError('O valor digitado é negativo!')
+    
+    @altura.setter
+    def altura(self, altura):
+        if altura > 0:
+            return self.altura
+        raise ValueError('O valor digitado é negativo!')
+    
+    @area.getter
+    def area(self):
+        self._area = self._base * self._altura
+        return self.area
+    
+    @medidas.setter
+    def medidas(self, base, altura):
+        if base > 0 and altura > 0:
+            self._medidas = base * altura
+        raise ValueError('O valor digitado é negativo!')
+        
+
+    
