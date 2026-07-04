@@ -449,47 +449,38 @@ class Retangulo:
 
     @property
     def base(self):
-        self._base
-        return
+        return self._base
     @property
     def altura(self):
-        self._altura
-        return
+        return self._altura
     @property
     def area(self):
-        self._area
-        return
+        return self._base * self._altura
     @property
     def medidas(self):
-        self._medidas
-        return
+        return f'Base = {self._base}\nAltura = {self._altura}\nÁrea = {self._area:.2f}'
     
     @base.setter
     def base(self, base):
         if base > 0:
             self._base = base
-            return self._base
-        raise ValueError('O valor digitado é negativo!')
+        else:
+            raise ValueError('O valor digitado é negativo!')
     
     @altura.setter
     def altura(self, altura):
         if altura > 0:
             self._altura = altura
-            return self._altura
-        raise ValueError('O valor digitado é negativo!')
-    
-    @area.getter
-    def area(self):
-        return self._base * self._altura
+        else: 
+            raise ValueError('O valor digitado é negativo!')
     
     @medidas.setter
-    def medidas(self, base, altura):
-        self._medidas = (base, altura)
+    def medidas(self, valores):
+        base, altura = valores
         if base > 0 and altura > 0:
+            self._base = base
+            self._altura = altura
             self._area = base * altura
-        raise ValueError('O valor digitado é negativo!')
-    
-    @medidas.getter
-    def medidas(self):
-        return f'Base = {self._base}\nAltura = {self._altura}\nÁrea = {self._area:.2f}'
+        else: 
+            raise ValueError('O valor digitado é negativo!')
     
