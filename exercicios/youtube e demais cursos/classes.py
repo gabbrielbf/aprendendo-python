@@ -483,4 +483,31 @@ class Retangulo:
             self._area = base * altura
         else: 
             raise ValueError('O valor digitado é negativo!')
+
+
+class Pessoa(ABC):
+    def __init__(self, nome='', nascimento=''):
+        self._nome = nome
+        self._nascimento = nascimento
+
+    @property
+    def nome(self):
+        return self._nome
+
+    @property
+    def nascimento(self):
+        return self._nascimento       
+
+class Aluno(Pessoa):
+    def __init__(self, nome='', nascimento='', curso=''):
+        super().__init__(nome, nascimento) 
+        self._curso = curso
+
+    @property
+    def curso(self):
+        return self._curso
     
+    def acicionar_curso(self, curso=input('Nome do curso: ')):
+        lista_cursos = []
+        novo_curso = curso
+        lista_cursos.append(novo_curso)
