@@ -486,7 +486,8 @@ class Retangulo:
 
 
 class Pessoa(ABC):
-    def __init__(self, nome='', nascimento=''):
+    ano_atual = 2026
+    def __init__(self, nome='', nascimento=0): 
         self._nome = nome
         self._nascimento = nascimento
 
@@ -496,18 +497,33 @@ class Pessoa(ABC):
 
     @property
     def nascimento(self):
-        return self._nascimento       
+        return self._nascimento
+
+    @property
+    def idade(self):
+        return Pessoa.ano_atual - self._nascimento   
 
 class Aluno(Pessoa):
-    def __init__(self, nome='', nascimento='', curso=''):
+    def __init__(self, nome='', nascimento=0, curso=''):
         super().__init__(nome, nascimento) 
         self._curso = curso
+        self.lista_cursos = ['ADS', 'ENF', 'FIS', 'ADM']
 
+    def add_curso(self, curso=''):
+        curso_maiusc = curso.upper()
+        if curso_maiusc not in self.lista_cursos:
+            curso_maiusc = curso.upper()
+            self.lista_cursos.append(curso_maiusc)
+        else:
+            raise Exception('[ERRO] Curso já listado!')
+        
     @property
     def curso(self):
         return self._curso
     
-    def acicionar_curso(self, curso=input('Nome do curso: ')):
-        lista_cursos = []
-        novo_curso = curso
-        lista_cursos.append(novo_curso)
+    @curso.setter
+    def curso(self, curso=''):
+        if curso in self.lista_cursos:
+            self._curso = curso
+        else:
+            raise Exception('[ERRO] Curso não listado.')
