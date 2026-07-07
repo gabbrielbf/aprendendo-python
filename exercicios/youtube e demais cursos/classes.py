@@ -503,8 +503,9 @@ class Pessoa(ABC):
     def idade(self):
         return Pessoa.ano_atual - self._nascimento   
 
+
 class Aluno(Pessoa):
-    def __init__(self, nome='', nascimento=0, curso=''):
+    def __init__(self, nome='', nascimento=0, curso='ADM'):
         super().__init__(nome, nascimento) 
         self._curso = curso
         self.lista_cursos = ['ADS', 'ENF', 'FIS', 'ADM']
@@ -523,7 +524,8 @@ class Aluno(Pessoa):
     
     @curso.setter
     def curso(self, curso=''):
-        if curso in self.lista_cursos:
-            self._curso = curso
+        curso_maiusc = curso.upper()
+        if curso_maiusc in self.lista_cursos:
+            self._curso = curso_maiusc
         else:
             raise Exception('[ERRO] Curso não listado.')
