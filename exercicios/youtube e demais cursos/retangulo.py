@@ -3,9 +3,9 @@ from rich import inspect
 
 def main():
     r = Retangulo()
-    r.base = 12
-    r.altura = 33
-    r.medidas = (9, 3)
+    # r.base = 12
+    # r.altura = 33
+    r.medidas = (15, 33)
 
     inspect(r)
     

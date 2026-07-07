@@ -244,8 +244,7 @@ class SMS(Notificador):
         return
     
     def enviar_mensagem(self, mensagem):
-        return f'Enviando SMS para: [{self.numero_telefone}] -> {mensagem}'
-    
+        return f'Enviando SMS para: [{self.numero_telefone}] -> {mensagem}'  
 
 # Exercicio 3 - Sistema simples de relatórios
 # Classes abstratas
@@ -274,7 +273,6 @@ class ExportarTXT(Exportador):
         TXT_exportado = f'Exportando para TXT: [{conteudo}]'
         return TXT_exportado
 
-
 # Classes Objetos
 class RelatorioFinanceiro(Relatorio):
     
@@ -287,7 +285,6 @@ class RelatorioVendas(Relatorio):
     def gerar_conteudo(self, dados):
         dados_vendas = f'Tivemos {dados} vendas este mês!'
         return dados_vendas
-
 
 # RPG Simples
 import random
@@ -315,18 +312,19 @@ class Personagem(ABC):
     def curar(self):
         pass
 
+
 class Guerreiro(Personagem):
     
     def curar(self):
         print(f'O Guerreiro {self.nome} se curou com ataduras e recuperou {random.randint(0, 100)} pontos de vida!')
         return
 
+
 class Mago(Personagem):
 
     def curar(self):
         print(f'O Mago {self.nome} se curou com uma poção e recuperou {random.randint(0, 100)} pontos de vida!')
         return
-
 
 # Sistema de conta bancária para treinar encapsulamento
 class ContaBancaria:
@@ -355,7 +353,6 @@ class ContaBancaria:
             self.__saldo -= valor
             print(f'Saque de R${valor:,.2f} autorizado na conta {self.id}')
         return
-
 
 # Sistema de avaliacao para treinar acesso de dados em encapsulamento
 class Avaliacao:
@@ -446,6 +443,10 @@ class Diario:
 
 
 class Retangulo:
+    def __init__(self, base=0, altura=0):
+        self._base = base
+        self._altura = altura
+        return
 
     @property
     def base(self):
@@ -466,7 +467,7 @@ class Retangulo:
             self._base = base
         else:
             raise ValueError('O valor digitado é negativo!')
-    
+
     @altura.setter
     def altura(self, altura):
         if altura > 0:
