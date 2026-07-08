@@ -569,3 +569,7 @@ class Musica(ABC):
     def exibir_detalhes(self):
         pass
 
+
+class Song1(Musica):
+    def exibir_detalhes(self):
+        return f'O titulo atual é: {self.titulo_getter}\nO artista padrão é: {self.artista_getter}\nA duração em segundos: {self.duracao_getter}'

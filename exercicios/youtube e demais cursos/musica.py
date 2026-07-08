@@ -1,12 +1,17 @@
-from classes import Musica
+from classes import Song1
+from rich import inspect
 
 def main():
-    class Song1(Musica):
-        def exibir_detalhes(self):
-            return f'O titulo atual é: {self.__titulo}\n O artista padrão é: {self.__artista}\n A duração em segundos: {self.__duracaoEmSegundos}'
-        
+    print()    
     song1 = Song1()
-    song1.exibir_detalhes()
+    print(song1.exibir_detalhes())
+    print()
+    song1.artista_setter = 'João Paulo'
+    song1.titulo_setter = 'Galinha pintadinha'
+    song1.duracao_setter = 120
+    print(song1.exibir_detalhes())
+    print()
+    # song1.duracao_setter = -20 # <- Valor passado negativo propositalmente para captar erros de valor
     return
 
 if __name__ == '__main__':
