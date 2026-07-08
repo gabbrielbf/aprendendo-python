@@ -530,3 +530,42 @@ class Aluno(Pessoa):
             self._curso = curso_maiusc
         else:
             raise Exception('[ERRO] Curso não listado.')
+
+
+class Musica(ABC):
+    def __init__(self):
+        self.__titulo = 'Titulo padrão'
+        self.__artista = 'Nome padrão'
+        self.__duracaoEmSegundos = 0
+
+    @property
+    def artista_getter(self):
+        return self.__artista
+    
+    @property
+    def titulo_getter(self):
+        return self.__titulo
+    
+    @property
+    def duracao_getter(self):
+        return self.__duracaoEmSegundos
+    
+    @artista_getter.setter
+    def artista_setter(self, nome=''):
+        self.__artista = nome
+
+    @titulo_getter.setter
+    def titulo_setter(self, titulo=''):
+        self.__titulo = titulo
+    
+    @duracao_getter.setter
+    def duracao_setter(self, duracao):
+        if duracao > 0:
+            self.__duracaoEmSegundos = duracao
+        else:
+            raise Exception('Não é possível colocar uma duração negativa!')
+
+    @abstractmethod
+    def exibir_detalhes(self):
+        pass
+
