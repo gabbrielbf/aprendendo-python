@@ -589,6 +589,9 @@ class Musica(Midia):
 
     def dar_play(self):
         return f'Dando play na música do artista {self.artista_getter} do album {self.album_getter}'
+    
+    def exibir_detalhes(self):
+        return f'O titulo atual é: {self.titulo_getter}\nO artista padrão é: {self.artista_getter}\nA duração em segundos: {self.duracao_getter}s\nAlbum: {self.album_getter}'
 
 
 class Podcast(Midia):
@@ -606,8 +609,7 @@ class Podcast(Midia):
 
     def dar_play(self):
         return f'Dando play no podcast do canal {self.host_getter}'
-
-
-class Midia1():
+    
     def exibir_detalhes(self):
-        return f'O titulo atual é: {self.titulo_getter}\nO artista padrão é: {self.artista_getter}\nA duração em segundos: {self.duracao_getter}'
+        return  f'O titulo atual é: {self.titulo_getter}\nO host de hoje é: {self.host_setter}\nA duração em horas: {self.duracao_getter}h'
+
