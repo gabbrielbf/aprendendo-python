@@ -532,11 +532,12 @@ class Aluno(Pessoa):
             raise Exception('[ERRO] Curso não listado.')
 
 
-class Musica(ABC):
+class Midia(ABC):
     def __init__(self):
         self.__titulo = 'Titulo padrão'
         self.__artista = 'Nome padrão'
         self.__duracaoEmSegundos = 0
+        return
 
     @property
     def artista_getter(self):
@@ -569,7 +570,44 @@ class Musica(ABC):
     def exibir_detalhes(self):
         pass
 
+    def dar_play(self):
+        return f'Dando play na mídia do artista {self.artista_getter}'
 
-class Song1(Musica):
+
+class Musica(Midia):
+    def __init__(self):
+        super().__init__()
+        self.__album = 'Album genérico'
+
+    @property
+    def album_getter(self):
+        return self.__album
+    
+    @album_getter.setter
+    def album_setter(self, album):
+        self.__album = album
+
+    def dar_play(self):
+        return f'Dando play na música do artista {self.artista_getter} do album {self.album_getter}'
+
+
+class Podcast(Midia):
+    def __init__(self):
+        super().__init__()
+        self.__host = 'Podcaster genérico'
+
+    @property
+    def host_getter(self):
+        return self.__host
+    
+    @host_getter.setter
+    def host_setter(self, host):
+        self.__host = host
+
+    def dar_play(self):
+        return f'Dando play no podcast do canal {self.host_getter}'
+
+
+class Midia1():
     def exibir_detalhes(self):
         return f'O titulo atual é: {self.titulo_getter}\nO artista padrão é: {self.artista_getter}\nA duração em segundos: {self.duracao_getter}'
