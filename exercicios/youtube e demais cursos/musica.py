@@ -14,6 +14,13 @@ def musica():
     print(musica1.dar_play())
     print()
     # song1.duracao_setter = -20 # <- Valor passado negativo propositalmente para captar erros de valor
+
+    # Criando a playlist na funcão musica para teste
+    playlist1 = Playlist()
+    playlist1.playlist_setter = musica1
+    playlist1.playlist_getter
+    playlist1.duracao_playlist_getter
+    playlist1.dar_play_em_tudo()
     return
 
 def podcast():
@@ -27,7 +34,15 @@ def podcast():
     print(podcast1.exibir_detalhes())
     print(podcast1.dar_play())
     print()
-    return
+
+    # Criando a playlist na funcão podcast para teste
+    playlist1 = Playlist()
+    playlist1.playlist_setter = podcast1
+    playlist1.playlist_getter
+    playlist1.duracao_playlist_getter
+    playlist1.dar_play_em_tudo()
+    return 
+
 
 def main():
     musica()

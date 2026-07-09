@@ -625,12 +625,11 @@ class Playlist:
         else:
             print('Playlist atual:')
             for i in range(0, len(self.__playlist)):
-                print(f'{i} - {self.__playlist[i]}')
+                print(f'{i + 1} - Artista: {self.__playlist[i].artista_getter} | Música: {self.__playlist[i].titulo_getter}')
     
     @playlist_getter.setter
     def playlist_setter(self, midia):
-        if (midia == self.__class__.__name__ == 'Musica' or
-            midia == self.__class__.__name__ == 'Podcast'):
+        if (isinstance(midia, (Musica, Podcast))):
             self.__playlist.append(midia)
         else:
             raise Exception('O item não está no Spotify.')
@@ -650,8 +649,10 @@ class Playlist:
             raise Exception('A playlist está vazia!')
         else:
             for midia in self.__playlist:
-                print(f'{midia.self.__class__.__name__}: {midia.dar_play()}')
-                print(f'{midia.self.__class__.__name__}: {midia.exibir_detalhes()}')
+                print(f'--- {midia.__class__.__name__} ---')
+                print()
+                print(midia.dar_play())
+                print(midia.exibir_detalhes())
                 print()
 
     
