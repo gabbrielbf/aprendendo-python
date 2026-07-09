@@ -23,7 +23,7 @@ def podcast():
     print()
     podcast1.titulo_setter = 'Live da madrugada'
     podcast1.host_setter = 'Podpah'
-    podcast1.duracao_setter = 32
+    podcast1.duracao_setter = 7500
     print(podcast1.exibir_detalhes())
     print(podcast1.dar_play())
     print()

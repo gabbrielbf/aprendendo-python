@@ -611,7 +611,7 @@ class Podcast(Midia):
         return f'Dando play no podcast do canal {self.host_getter}'
     
     def exibir_detalhes(self):
-        return  f'O titulo atual é: {self.titulo_getter}\nO host de hoje é: {self.host_setter}\nA duração em horas: {self.duracao_getter}h'
+        return  f'O titulo atual é: {self.titulo_getter}\nO host de hoje é: {self.host_setter}\nA duração em segundos: {self.duracao_getter}s'
 
 
 class Playlist:
@@ -635,5 +635,12 @@ class Playlist:
         else:
             raise Exception('O item não está no Spotify.')
     
-    
-        
+    @property
+    def duracao_playlist_getter(self):
+        if not self.__playlist:
+            raise Exception('A playlist está vazia!')
+        else:
+            segundos_totais = 0
+            for midia in self.__playlist:
+                segundos_totais += midia.self.__duracaoEmSegundos
+            print(f'Tempo de duração da playlist em segundos: {segundos_totais}s')
