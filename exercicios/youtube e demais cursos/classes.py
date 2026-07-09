@@ -642,5 +642,16 @@ class Playlist:
         else:
             segundos_totais = 0
             for midia in self.__playlist:
-                segundos_totais += midia.self.__duracaoEmSegundos
+                segundos_totais += midia.duracao_getter
             print(f'Tempo de duração da playlist em segundos: {segundos_totais}s')
+
+    def dar_play_em_tudo(self):
+        if not self.__playlist:
+            raise Exception('A playlist está vazia!')
+        else:
+            for midia in self.__playlist:
+                print(f'{midia.self.__class__.__name__}: {midia.dar_play()}')
+                print(f'{midia.self.__class__.__name__}: {midia.exibir_detalhes()}')
+                print()
+
+    
