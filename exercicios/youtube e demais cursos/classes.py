@@ -613,3 +613,27 @@ class Podcast(Midia):
     def exibir_detalhes(self):
         return  f'O titulo atual é: {self.titulo_getter}\nO host de hoje é: {self.host_setter}\nA duração em horas: {self.duracao_getter}h'
 
+
+class Playlist:
+    def __init__(self):
+        self.__playlist = []
+
+    @property
+    def playlist_getter(self):
+        if not self.__playlist:
+            raise Exception('A playlist está vazia!')
+        else:
+            print('Playlist atual:')
+            for i in range(0, len(self.__playlist)):
+                print(f'{i} - {self.__playlist[i]}')
+    
+    @playlist_getter.setter
+    def playlist_setter(self, midia):
+        if (midia == self.__class__.__name__ == 'Musica' or
+            midia == self.__class__.__name__ == 'Podcast'):
+            self.__playlist.append(midia)
+        else:
+            raise Exception('O item não está no Spotify.')
+    
+    
+        

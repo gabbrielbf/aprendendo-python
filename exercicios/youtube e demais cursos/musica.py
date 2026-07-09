@@ -1,4 +1,4 @@
-from classes import Musica, Podcast
+from classes import Musica, Podcast, Playlist
 from rich import inspect
 
 def musica():
