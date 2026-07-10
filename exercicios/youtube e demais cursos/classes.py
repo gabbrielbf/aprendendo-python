@@ -531,7 +531,7 @@ class Aluno(Pessoa):
         else:
             raise Exception('[ERRO] Curso não listado.')
 
-
+# Criando um mini sistema de Spotify
 class Midia(ABC):
     def __init__(self):
         self.__titulo = 'Titulo padrão'
@@ -611,7 +611,7 @@ class Podcast(Midia):
         return f'Dando play no podcast do canal {self.host_getter}'
     
     def exibir_detalhes(self):
-        return  f'O titulo atual é: {self.titulo_getter}\nO host de hoje é: {self.host_setter}\nA duração em segundos: {self.duracao_getter}s'
+        return  f'O titulo atual é: {self.titulo_getter}\nO host de hoje é: {self.host_getter}\nA duração em segundos: {self.duracao_getter}s'
 
 
 class Playlist:
@@ -655,4 +655,3 @@ class Playlist:
                 print(midia.exibir_detalhes())
                 print()
 
-    
