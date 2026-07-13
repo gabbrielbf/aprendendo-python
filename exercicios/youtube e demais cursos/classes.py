@@ -533,10 +533,10 @@ class Aluno(Pessoa):
 
 # Criando um mini sistema de Spotify
 class Midia(ABC):
-    def __init__(self):
-        self.__titulo = 'Titulo padrão'
-        self.__artista = 'Nome padrão'
-        self.__duracaoEmSegundos = 0
+    def __init__(self, titulo, artista, duracao):
+        self.titulo = titulo
+        self.artista = artista
+        self.duracao = duracao 
         return
 
     @property
@@ -549,7 +549,7 @@ class Midia(ABC):
     
     @property
     def duracao(self):
-        return self.__duracaoEmSegundos
+        return self.__duracao
     
     @artista.setter
     def artista(self, nome=''):
@@ -562,7 +562,7 @@ class Midia(ABC):
     @duracao.setter
     def duracao(self, duracao):
         if duracao > 0:
-            self.__duracaoEmSegundos = duracao
+            self.__duracao = duracao
         else:
             raise Exception('Não é possível colocar uma duração negativa!')
 
@@ -575,9 +575,10 @@ class Midia(ABC):
 
 
 class Musica(Midia):
-    def __init__(self):
-        super().__init__()
-        self.__album = 'Album genérico'
+    def __init__(self, titulo, artista, duracao, album):
+        super().__init__(titulo, artista, duracao)
+        self.album = album
+        return
 
     @property
     def album(self):
@@ -595,9 +596,9 @@ class Musica(Midia):
 
 
 class Podcast(Midia):
-    def __init__(self):
-        super().__init__()
-        self.__host = 'Podcaster genérico'
+    def __init__(self, titulo, artista, duracao, host):
+        super().__init__(titulo, artista, duracao)
+        self.host = host
 
     @property
     def host(self):
@@ -629,7 +630,7 @@ class Playlist:
     
     @playlist.setter
     def playlist(self, midia):
-        if (isinstance(midia, (Musica, Podcast))):
+        if (isinstance(midia, Midia)):
             self.__playlist.append(midia)
         else:
             raise Exception('O item não está no Spotify.')
