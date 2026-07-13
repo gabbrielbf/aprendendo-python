@@ -656,4 +656,35 @@ class Playlist:
                 print(midia.exibir_detalhes())
                 print()
 
+# Criando um protótipo de assinaturas em streaming
+class PlanoGenerico(ABC):
+    def __init__(self, nome_plano, valor_plano):
+        self._nome_plano = nome_plano
+        self.__valor_plano = valor_plano
+        return
+    
+    @abstractmethod
+    def calcular_preco_assinatura(self, plano):
+        pass
 
+
+class PlanoPadrao(PlanoGenerico):
+    def __init__(self, nome_plano, valor_plano, lim_telas=2):
+        super().__init__(nome_plano, valor_plano)
+        self.__lim_telas = lim_telas
+        return
+
+
+class PlanoPremium(PlanoGenerico):
+    def __init__(self, nome_plano, valor_plano):
+        super().__init__(nome_plano, valor_plano)
+        return
+    
+class Usuario(ABC):
+    def __init__(self, nome, email, plano):
+        super().__init__()
+        self.__nome = nome
+        self.__email = email
+        self.__plano = plano
+
+        
