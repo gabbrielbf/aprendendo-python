@@ -626,7 +626,7 @@ class Playlist:
         else:
             print('Playlist atual:')
             for i in range(0, len(self.__playlist)):
-                print(f'{i + 1} - Artista: {self.__playlist[i].artista} | Música: {self.__playlist[i].titulo}')
+                print(f'{i + 1} - Artista: {self.__playlist[i].artista} | Midia: {self.__playlist[i].titulo}')
     
     @playlist.setter
     def playlist(self, midia):
