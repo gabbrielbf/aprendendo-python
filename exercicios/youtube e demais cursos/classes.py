@@ -540,27 +540,27 @@ class Midia(ABC):
         return
 
     @property
-    def artista_getter(self):
+    def artista(self):
         return self.__artista
     
     @property
-    def titulo_getter(self):
+    def titulo(self):
         return self.__titulo
     
     @property
-    def duracao_getter(self):
+    def duracao(self):
         return self.__duracaoEmSegundos
     
-    @artista_getter.setter
-    def artista_setter(self, nome=''):
+    @artista.setter
+    def artista(self, nome=''):
         self.__artista = nome
 
-    @titulo_getter.setter
-    def titulo_setter(self, titulo=''):
+    @titulo.setter
+    def titulo(self, titulo=''):
         self.__titulo = titulo
     
-    @duracao_getter.setter
-    def duracao_setter(self, duracao):
+    @duracao.setter
+    def duracao(self, duracao):
         if duracao > 0:
             self.__duracaoEmSegundos = duracao
         else:
@@ -571,7 +571,7 @@ class Midia(ABC):
         pass
 
     def dar_play(self):
-        return f'Dando play na mídia do artista {self.artista_getter}'
+        return f'Dando play na mídia do artista {self.artista}'
 
 
 class Musica(Midia):
@@ -580,18 +580,18 @@ class Musica(Midia):
         self.__album = 'Album genérico'
 
     @property
-    def album_getter(self):
+    def album(self):
         return self.__album
     
-    @album_getter.setter
-    def album_setter(self, album):
+    @album.setter
+    def album(self, album):
         self.__album = album
 
     def dar_play(self):
-        return f'Dando play na música do artista {self.artista_getter} do album {self.album_getter}'
+        return f'Dando play na música do artista {self.artista} do album {self.album}'
     
     def exibir_detalhes(self):
-        return f'O titulo atual é: {self.titulo_getter}\nO artista padrão é: {self.artista_getter}\nA duração em segundos: {self.duracao_getter}s\nAlbum: {self.album_getter}'
+        return f'O titulo atual é: {self.titulo}\nO artista padrão é: {self.artista}\nA duração em segundos: {self.duracao}s\nAlbum: {self.album}'
 
 
 class Podcast(Midia):
@@ -600,18 +600,18 @@ class Podcast(Midia):
         self.__host = 'Podcaster genérico'
 
     @property
-    def host_getter(self):
+    def host(self):
         return self.__host
     
-    @host_getter.setter
-    def host_setter(self, host):
+    @host.setter
+    def host(self, host):
         self.__host = host
 
     def dar_play(self):
-        return f'Dando play no podcast do canal {self.host_getter}'
+        return f'Dando play no podcast do canal {self.host}'
     
     def exibir_detalhes(self):
-        return  f'O titulo atual é: {self.titulo_getter}\nO host de hoje é: {self.host_getter}\nA duração em segundos: {self.duracao_getter}s'
+        return  f'O titulo atual é: {self.titulo}\nO host de hoje é: {self.host}\nA duração em segundos: {self.duracao}s'
 
 
 class Playlist:
@@ -619,29 +619,29 @@ class Playlist:
         self.__playlist = []
 
     @property
-    def playlist_getter(self):
+    def playlist(self):
         if not self.__playlist:
             raise Exception('A playlist está vazia!')
         else:
             print('Playlist atual:')
             for i in range(0, len(self.__playlist)):
-                print(f'{i + 1} - Artista: {self.__playlist[i].artista_getter} | Música: {self.__playlist[i].titulo_getter}')
+                print(f'{i + 1} - Artista: {self.__playlist[i].artista} | Música: {self.__playlist[i].titulo}')
     
-    @playlist_getter.setter
-    def playlist_setter(self, midia):
+    @playlist.setter
+    def playlist(self, midia):
         if (isinstance(midia, (Musica, Podcast))):
             self.__playlist.append(midia)
         else:
             raise Exception('O item não está no Spotify.')
     
     @property
-    def duracao_playlist_getter(self):
+    def duracao_playlist(self):
         if not self.__playlist:
             raise Exception('A playlist está vazia!')
         else:
             segundos_totais = 0
             for midia in self.__playlist:
-                segundos_totais += midia.duracao_getter
+                segundos_totais += midia.duracao
             print(f'Tempo de duração da playlist em segundos: {segundos_totais}s')
 
     def dar_play_em_tudo(self):
@@ -654,4 +654,5 @@ class Playlist:
                 print(midia.dar_play())
                 print(midia.exibir_detalhes())
                 print()
+
 
