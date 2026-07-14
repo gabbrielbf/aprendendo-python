@@ -660,29 +660,38 @@ class Playlist:
 class PlanoGenerico(ABC):
     def __init__(self, nome_plano, valor_plano):
         self._nome_plano = nome_plano
-        self.__valor_plano = valor_plano
+        self._valor_plano = valor_plano
         return
     
     @abstractmethod
-    def calcular_preco_assinatura(self, plano):
+    def calcular_preco_assinatura(self):
         pass
 
 
 class PlanoPadrao(PlanoGenerico):
     def __init__(self, nome_plano, valor_plano, lim_telas=2):
         super().__init__(nome_plano, valor_plano)
-        self.__lim_telas = lim_telas
+        self._lim_telas = lim_telas
         return
+    
+    def calcular_preco_assinatura(self):
+        return self._valor_plano
 
 
 class PlanoPremium(PlanoGenerico):
-    def __init__(self, nome_plano, valor_plano):
+    def __init__(self, nome_plano, valor_plano, qual_plano):
         super().__init__(nome_plano, valor_plano)
+        self._qual_plano = qual_plano
         return
     
-class Usuario(ABC):
+    def calcular_preco_assinatura(self):
+        if self._qual_plano == True:
+            return self._valor_plano * 0.90
+        else:
+            return self._valor_plano
+
+class Usuario:
     def __init__(self, nome, email, plano):
-        super().__init__()
         self.__nome = nome
         self.__email = email
         self.__plano = plano
