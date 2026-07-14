@@ -679,13 +679,13 @@ class PlanoPadrao(PlanoGenerico):
 
 
 class PlanoPremium(PlanoGenerico):
-    def __init__(self, nome_plano, valor_plano, qual_plano):
+    def __init__(self, nome_plano, valor_plano, anual):
         super().__init__(nome_plano, valor_plano)
-        self._qual_plano = qual_plano
+        self._qual_plano = anual
         return
     
     def calcular_preco_assinatura(self):
-        if self._qual_plano == True:
+        if self._qual_plano == 'anual':
             return self._valor_plano * 0.90
         else:
             return self._valor_plano
@@ -761,7 +761,8 @@ class Streaming:
                 print(f'{indice} - Cliente: {cliente.nome} | Email: {cliente.email} | Plano: {cliente.plano._nome_plano} | Pago: R${valor_pago:.2f}')
             print("-" * 35)
             print(f"Faturamento Geral da StreamFlex: R${total:.2f}")
-            
+            print()
+
     @usuarios.setter
     def usuarios(self, novo_usuario):
         if isinstance(novo_usuario, Usuario):
