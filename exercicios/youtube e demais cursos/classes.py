@@ -690,10 +690,49 @@ class PlanoPremium(PlanoGenerico):
         else:
             return self._valor_plano
 
+
 class Usuario:
     def __init__(self, nome, email, plano):
+        self.nome = nome
+        self.email = email
+        self.plano = plano
+
+    @property
+    def nome(self):
+        if self.__nome == None:
+            raise Exception('O campo está vazio!')
+        else:
+            return self.__nome
+    
+    @property
+    def email(self):
+        if self.__email == None:
+            raise Exception('O campo está vazio!')
+        else:
+            return self.__email
+        
+    @property
+    def plano(self):
+        if self.__plano == None:
+            raise Exception('O campo está vazio!')
+        else:
+            return self.__plano
+    
+    @nome.setter
+    def nome(self, nome):
         self.__nome = nome
-        self.__email = email
+
+    @email.setter
+    def email(self, email):
+        if '@' not in email:
+            raise Exception(f'O email: {email} não possui @!')
+        else:
+            self.__email = email
+        
+    @plano.setter
+    def plano(self, plano):
         self.__plano = plano
+    
+    
 
         
