@@ -753,9 +753,15 @@ class Streaming:
         if not self.__usuarios:
             self.exibir_erro()
         else:
+            total = 0
+            print("--- Relatório de Faturamento Mensal ---")
             for indice, cliente in enumerate(self.__usuarios, start=1):
-                print(f'{indice} - Cliente: {cliente.nome} | Email: {cliente.email} | Plano: {cliente.plano._nome_plano}')
-
+                valor_pago = cliente.plano.calcular_preco_assinatura()
+                total += valor_pago
+                print(f'{indice} - Cliente: {cliente.nome} | Email: {cliente.email} | Plano: {cliente.plano._nome_plano} | Pago: R${valor_pago:.2f}')
+            print("-" * 35)
+            print(f"Faturamento Geral da StreamFlex: R${total:.2f}")
+            
     @usuarios.setter
     def usuarios(self, novo_usuario):
         if isinstance(novo_usuario, Usuario):

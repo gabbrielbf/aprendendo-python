@@ -1,4 +1,4 @@
-from classes import PlanoGenerico
+from classes import Streaming
 
 # StreamFlex
 
