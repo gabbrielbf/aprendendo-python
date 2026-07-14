@@ -734,5 +734,32 @@ class Usuario:
         self.__plano = plano
     
     
+class Streaming:
+    def __init__(self):
+        self.__usuarios = []
 
+    def exibir_erro(self):
+        raise Exception('A lista de usuários está vazia!')
+    
+    @property
+    def usuarios(self):
+        if not self.__usuarios:
+            self.exibir_erro()
+        else:
+            return self.__usuarios
+        
+    @property
+    def fatura(self):
+        if not self.__usuarios:
+            self.exibir_erro()
+        else:
+            for indice, cliente in enumerate(self.__usuarios, start=1):
+                print(f'{indice} - Cliente: {cliente.nome} | Email: {cliente.email} | Plano: {cliente.plano._nome_plano}')
+
+    @usuarios.setter
+    def usuarios(self, novo_usuario):
+        if isinstance(novo_usuario, Usuario):
+            self.__usuarios.append(novo_usuario)
+        else:
+            raise Exception('O usuário não se encaixa nos requisitos!')
         
