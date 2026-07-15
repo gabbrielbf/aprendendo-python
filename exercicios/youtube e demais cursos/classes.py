@@ -792,5 +792,7 @@ class Catraca(ABC):
     def abrir_catraca(self):
         pass
 
-class CatracaCentral(Catraca):
-    
+class Catracacentral(Catraca):
+    def abrir_catraca(self):
+        print('Abrindo catraca central.')
+        return
