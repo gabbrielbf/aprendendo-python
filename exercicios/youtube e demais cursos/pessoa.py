@@ -1,4 +1,4 @@
-from classes import Pessoa, Aluno
+from classes import Aluno
 from rich import inspect
 
 def main():

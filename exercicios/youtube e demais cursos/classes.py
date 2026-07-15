@@ -769,4 +769,28 @@ class Streaming:
             self.__usuarios.append(novo_usuario)
         else:
             raise Exception('O usuário não se encaixa nos requisitos!')
+
+
+class Catraca(ABC):
+    def __init__(self, posicao):
+        self.__posicao = posicao
+        return
+    
+    @property
+    def posicao(self):
+        print(f'Posição da vez: {self.__posicao}')
+        return
+    
+    @posicao.setter
+    def posicao(self, posicao):
+        if posicao > 0 and posicao <= 3:
+            self.__posicao = posicao
+        else:
+            raise Exception('A catraca selecionada é inválida.')
         
+    @abstractmethod
+    def abrir_catraca(self):
+        pass
+
+class CatracaCentral(Catraca):
+    
