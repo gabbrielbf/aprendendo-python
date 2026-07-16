@@ -807,38 +807,46 @@ class Calculadora:
     
     @property
     def num1(self):
+        print()
         print(f'Numero 1: {self.__num1}')
+        return
 
     @property
     def num2(self):
         print(f'Numero 2: {self.__num2}')
-
+        print()
+        return
+    
     @num1.setter
     def num1(self, num1):
-        if num1 is not int or num1 is not float:
-            raise Exception('Não é um número.')
-        else:
+        if type(num1) == int or type(num1) == float:
             self.num1 = num1
+        else:
+            raise Exception('Não é um número.')
 
     @num2.setter
     def num2(self, num2):
-        if num2 is not int or num2 is not float:
-            raise Exception('Não é um número.')
-        else:
+        if type(num2) == int or type(num2) == float:
             self.num1 = num2
+        else:
+            raise Exception('Não é um número.')
     
     def soma(self):
         result = self.__num1 + self.__num2
-        return result
+        print(f'Resultado da soma: {result}')
+        return 
     
     def subtracao(self):
         result = self.__num1 - self.__num2
-        return result
+        print(f'Resultado da soma subtração: {result}')
+        return 
 
     def multiplicar(self):
         result = self.__num1 * self.__num2
-        return result
+        print(f'Resultado da multiplicação: {result}')
+        return 
 
     def dividir(self):
         result = self.__num1 / self.__num2
-        return result
+        print(f'Resultado da divisão: {result}')
+        return 
