@@ -792,7 +792,53 @@ class Catraca(ABC):
     def abrir_catraca(self):
         pass
 
+
 class Catracacentral(Catraca):
     def abrir_catraca(self):
         print('Abrindo catraca central.')
         return
+
+
+class Calculadora:
+    def __init__(self, num1, num2):
+        self.__num1 = num1
+        self.__num2 = num2
+        return
+    
+    @property
+    def num1(self):
+        print(f'Numero 1: {self.__num1}')
+
+    @property
+    def num2(self):
+        print(f'Numero 2: {self.__num2}')
+
+    @num1.setter
+    def num1(self, num1):
+        if num1 is not int or num1 is not float:
+            raise Exception('Não é um número.')
+        else:
+            self.num1 = num1
+
+    @num2.setter
+    def num2(self, num2):
+        if num2 is not int or num2 is not float:
+            raise Exception('Não é um número.')
+        else:
+            self.num1 = num2
+    
+    def soma(self):
+        result = self.__num1 + self.__num2
+        return result
+    
+    def subtracao(self):
+        result = self.__num1 - self.__num2
+        return result
+
+    def multiplicar(self):
+        result = self.__num1 * self.__num2
+        return result
+
+    def dividir(self):
+        result = self.__num1 / self.__num2
+        return result
