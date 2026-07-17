@@ -432,7 +432,7 @@ class Diario:
         self.__segredos.append(msg)
         return
 
-    def ler_conteudo(self, senha=input('Digite a senha: ')): # <- Método getter, para obter o conteúdo através da senha
+    def ler_conteudo(self, senha='123456'): # <- Método getter, para obter o conteúdo através da senha
         if (senha == self.__senha):
             print()
             print('Diário liberado!')
@@ -916,6 +916,7 @@ class CameraSeguranca(Dispositivo):
             raise Exception('Você precisa ligar ou desligar o dispositivo!')
         return
 
+
 class Casa:
     def __init__(self):
         self.__dispositivos = []
@@ -936,4 +937,18 @@ class Casa:
         else:
             raise Exception('Dispositivo indisponível.')
         
-    
+    def ligar_todos(self):
+        if not self.__dispositivos:
+            raise Exception('Lista vazia.')
+        else:
+            print('Ligando todos os dispositivos:')
+            for indice, dispositivo in enumerate(self.__dispositivos, start=1):
+                print(f'{indice} - {dispositivo.ligar()}')
+
+    def exibir_relatorio(self):
+        if not self.__dispositivos:
+            raise Exception('Lista vazia.')
+        else:
+            print('Relatório de dispositivos:')
+            for indice, dispositivo in enumerate(self.__dispositivos, start=1):
+                print(f'{indice} - {dispositivo.status()}')
