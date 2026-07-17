@@ -798,6 +798,7 @@ class Catracacentral(Catraca):
         print('Abrindo catraca central.')
         return
 
+# Calculadora com classes
 import operator
 class Calculadora:
     def __init__(self, num1, operacao, num2):
@@ -821,3 +822,18 @@ class Calculadora:
         else:
             return "Operador inválido."
     
+
+# Sistema inteligente Smart Home
+class Dispositivo(ABC):
+    
+    @abstractmethod
+    def ligar(self):
+        pass
+
+    @abstractmethod
+    def desligar(self):
+        pass
+
+    @abstractmethod
+    def status(self):
+        pass
