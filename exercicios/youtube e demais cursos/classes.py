@@ -825,6 +825,9 @@ class Calculadora:
 
 # Sistema inteligente Smart Home
 class Dispositivo(ABC):
+    def __init__(self):
+        self.status = None
+        return
     
     @abstractmethod
     def ligar(self):
@@ -837,3 +840,100 @@ class Dispositivo(ABC):
     @abstractmethod
     def status(self):
         pass
+
+import random
+class Lampada(Dispositivo):
+    def __init__(self):
+        self.intensidade = random.randint(0, 100)
+        return
+    
+    def ligar(self):
+        print(f'Ligando a lâmpada na intensidade {self.intensidade}')
+        self.status = 'Ligada'
+        return
+    
+    def desligar(self):
+        print(f'Lãmpada desligada.')
+        self.status = 'Desligada'
+        return
+    
+    def status(self):
+        if self.status == 'Desligada':
+            print(f'A Lâmpada está {self.status}.')
+        elif self.status == 'Ligada':
+            print(f'A Lâmpada está {self.status} na intensidade {self.intensidade}.')
+        else:
+            raise Exception('Você precisa ligar ou desligar o dispositivo!')
+        return
+
+
+class ArCondicionado(Dispositivo):
+    def __init__(self):
+        self.temperatura = random.randint(17, 30)
+        return
+    
+    def ligar(self):
+        print(f'Ligando o Ar Condicionado na temperatura {self.temperatura}')
+        self.status = 'Ligado'
+        return
+    
+    def desligar(self):
+        print(f'Ar condicionado desligado.')
+        self.status = 'Desligado'
+        return
+    
+    def status(self):
+        if self.status == 'Desligado':
+            print(f'O Ar Condicionado está {self.status}.')
+        elif self.status == 'Ligado':
+            print(f'O Ar Condicinado está {self.status} na intensidade {self.intensidade}.')
+        else:
+            raise Exception('Você precisa ligar ou desligar o dispositivo!')
+        return
+    
+
+class CameraSeguranca(Dispositivo):
+    def __init__(self):
+        self.gravacao = 'Modo gravação'
+        return
+
+    def ligar(self):
+        print(f'Ligando a Câmera no {self.gravacao}')
+        self.status = 'Ligada'
+        return
+    
+    def desligar(self):
+        print(f'Câmera desligada.')
+        self.status = 'Desligada'
+        return
+    
+    def status(self):
+        if self.status == 'Desligada':
+            print(f'A Câmera está {self.status}.')
+        elif self.status == 'Ligada':
+            print(f'A Câmera está {self.status} no modo {self.gravacao}.')
+        else:
+            raise Exception('Você precisa ligar ou desligar o dispositivo!')
+        return
+
+class Casa:
+    def __init__(self):
+        self.__dispositivos = []
+        return
+    
+    @property
+    def dispositivo(self):
+        if not self.__dispositivos:
+            raise Exception('Lista vazia.')
+        else:
+            for indice, dispositivo in enumerate(self.__dispositivos, start=1):
+                print(f'{indice} - {dispositivo}')
+
+    @dispositivo.setter
+    def dispositivo(self, dispositivo):
+        if isinstance(dispositivo, (Lampada, ArCondicionado, CameraSeguranca)):
+            self.__dispositivos.append(dispositivo)
+        else:
+            raise Exception('Dispositivo indisponível.')
+        
+    
