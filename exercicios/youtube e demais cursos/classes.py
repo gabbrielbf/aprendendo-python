@@ -798,30 +798,26 @@ class Catracacentral(Catraca):
         print('Abrindo catraca central.')
         return
 
-
+import operator
 class Calculadora:
-    def __init__(self, num1, operador, num2):
-        self.__operador = operador
-        self.__num1 = num1
-        self.__num2 = num2
-        return
+    def __init__(self, num1, operacao, num2):
+        self.num1 = num1
+        self.operacao = operacao
+        self.num2 = num2
+
+        self.operadores = {
+            '+': operator.add,
+            '-': operator.sub,
+            '*': operator.mul,
+            '/': operator.truediv
+        }
     
-    @property
-    def operacao(self):
-        print()
-        print(f'Operação: {self.__num1} {self.__operador} {self.num2}')
-        return
-    
-    @operacao.setter
-    def operacao(self, num1, num2):
-        if (type(num1) == int or type(num1) == float and type(num2) == int or type(num2) == float):
-            self.num1 = num1
+    def calcular(self):
+        func = self.operadores.get(self.operacao)
+        if func:
+            if self.operacao == '/' and self.num2 == 0:
+                return "Erro: Divisão por zero!"
+            return func(self.num1, self.num2)
         else:
-            raise Exception('Algo digitado não é um número.')
-    
-    def operacao(self):
-        result = self.__num1 + self.__num2
-        print(f'Resultado da operação: {result}')
-        print()
-        return 
+            return "Operador inválido."
     
