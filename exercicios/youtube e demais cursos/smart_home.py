@@ -10,7 +10,7 @@ def main():
     casa.dispositivo = ar_condiciondo
     casa.dispositivo = camera_seguranca
 
-    casa.ligar_todos()
+    casa.dispositivo
 
 if __name__ == '__main__':
     main()

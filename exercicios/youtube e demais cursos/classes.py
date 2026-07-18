@@ -853,7 +853,7 @@ class Lampada(Dispositivo):
         return
     
     def desligar(self):
-        print(f'Lãmpada desligada.')
+        print(f'Lâmpada desligada.')
         self.status = 'Desligada'
         return
     
@@ -873,7 +873,7 @@ class ArCondicionado(Dispositivo):
         return
     
     def ligar(self):
-        print(f'Ligando o Ar Condicionado na temperatura {self.temperatura}')
+        print(f'Ligando o Ar Condicionado na temperatura {self.temperatura}°')
         self.status = 'Ligado'
         return
     
@@ -927,8 +927,10 @@ class Casa:
         if not self.__dispositivos:
             raise Exception('Lista vazia.')
         else:
+            print()
             for indice, dispositivo in enumerate(self.__dispositivos, start=1):
-                print(f'{indice} - {dispositivo}')
+                print(f'{indice} - {dispositivo.desligar()}')
+            print()
 
     @dispositivo.setter
     def dispositivo(self, dispositivo):
