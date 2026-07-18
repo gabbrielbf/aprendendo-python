@@ -12,6 +12,7 @@ def main():
 
     casa.dispositivo
     casa.ligar_todos()
+    casa.exibir_relatorio()
 
 if __name__ == '__main__':
     main()

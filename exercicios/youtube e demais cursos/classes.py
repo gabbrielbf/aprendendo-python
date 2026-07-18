@@ -821,13 +821,9 @@ class Calculadora:
             return func(self.num1, self.num2)
         else:
             return "Operador inválido."
-    
 
 # Sistema inteligente Smart Home
 class Dispositivo(ABC):
-    def __init__(self):
-        self.status = 'Aguardando comando'
-        return
     
     @abstractmethod
     def ligar(self):
@@ -848,18 +844,18 @@ class Lampada(Dispositivo):
         return
     
     def ligar(self):
-        self.status = 'Ligada'
+        self.status_atual = 'Ligada'
         return f'Ligando a lâmpada na intensidade {self.intensidade}'
     
     def desligar(self):
-        self.status = 'Desligada'
+        self.status_atual = 'Desligada'
         return f'Lâmpada desligada.'
     
     def status(self):
-        if self.status == 'Desligada':
-            return f'A Lâmpada está {self.status}.'
-        elif self.status == 'Ligada':
-            return f'A Lâmpada está {self.status} na intensidade {self.intensidade}.'
+        if self.status_atual == 'Desligada':
+            return f'A Lâmpada está {self.status_atual}.'
+        elif self.status_atual == 'Ligada':
+            return f'A Lâmpada está {self.status_atual} na intensidade {self.intensidade}.'
         else:
             raise Exception('Você precisa ligar ou desligar o dispositivo!')
 
@@ -870,18 +866,18 @@ class ArCondicionado(Dispositivo):
         return
     
     def ligar(self):
-        self.status = 'Ligado'
+        self.status_atual = 'Ligado'
         return f'Ligando o Ar Condicionado na temperatura {self.temperatura}°'
     
     def desligar(self):
-        self.status = 'Desligado'
+        self.status_atual = 'Desligado'
         return f'Ar condicionado desligado.'
     
     def status(self):
-        if self.status == 'Desligado':
-            return f'O Ar Condicionado está {self.status}.'
-        elif self.status == 'Ligado':
-            return f'O Ar Condicinado está {self.status} na intensidade {self.intensidade}.'
+        if self.status_atual == 'Desligado':
+            return f'O Ar Condicionado está {self.status_atual}.'
+        elif self.status_atual == 'Ligado':
+            return f'O Ar Condicinado está {self.status_atual} na intensidade {self.intensidade}.'
         else:
             raise Exception('Você precisa ligar ou desligar o dispositivo!')
     
@@ -892,18 +888,18 @@ class CameraSeguranca(Dispositivo):
         return
 
     def ligar(self):
-        self.status = 'Ligada'
+        self.status_atual = 'Ligada'
         return f'Ligando a Câmera no {self.gravacao}'
     
     def desligar(self):
-        self.status = 'Desligada'
-        return  f'Câmera desligada.'
+        self.status_atual = 'Desligada'
+        return f'Câmera desligada.'
     
     def status(self):
-        if self.status == 'Desligada':
-            return f'A Câmera está {self.status}.'
-        elif self.status == 'Ligada':
-            return f'A Câmera está {self.status} no modo {self.gravacao}.'
+        if self.status_atual == 'Desligada':
+            return f'A Câmera está {self.status_atual}.'
+        elif self.status_atual == 'Ligada':
+            return f'A Câmera está {self.status_atual} no modo {self.gravacao}.'
         else:
             raise Exception('Você precisa ligar ou desligar o dispositivo!')
 
