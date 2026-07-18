@@ -945,4 +945,4 @@ class Casa:
                 print(f'{indice} - {dispositivo.status()}')
             print()
 
-# Chain of Responsibility
+
