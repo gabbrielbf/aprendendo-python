@@ -877,7 +877,7 @@ class ArCondicionado(Dispositivo):
         if self.status_atual == 'Desligado':
             return f'O Ar Condicionado está {self.status_atual}.'
         elif self.status_atual == 'Ligado':
-            return f'O Ar Condicinado está {self.status_atual} na intensidade {self.intensidade}.'
+            return f'O Ar Condicinado está {self.status_atual} na intensidade {self.temperatura}.'
         else:
             raise Exception('Você precisa ligar ou desligar o dispositivo!')
     

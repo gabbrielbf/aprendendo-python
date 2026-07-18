@@ -13,6 +13,13 @@ def main():
     casa.dispositivo
     casa.ligar_todos()
     casa.exibir_relatorio()
+    ar_condiciondo.desligar()
+    casa.exibir_relatorio()
+    lampada.desligar()
+    casa.exibir_relatorio()
+    lampada.ligar()
+    camera_seguranca.desligar()
+    casa.exibir_relatorio()
 
 if __name__ == '__main__':
     main()
