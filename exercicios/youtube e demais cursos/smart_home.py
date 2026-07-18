@@ -11,6 +11,7 @@ def main():
     casa.dispositivo = camera_seguranca
 
     casa.dispositivo
+    casa.ligar_todos()
 
 if __name__ == '__main__':
     main()

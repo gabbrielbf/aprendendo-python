@@ -826,7 +826,7 @@ class Calculadora:
 # Sistema inteligente Smart Home
 class Dispositivo(ABC):
     def __init__(self):
-        self.status = None
+        self.status = 'Aguardando comando'
         return
     
     @abstractmethod
@@ -848,23 +848,20 @@ class Lampada(Dispositivo):
         return
     
     def ligar(self):
-        print(f'Ligando a lâmpada na intensidade {self.intensidade}')
         self.status = 'Ligada'
-        return
+        return f'Ligando a lâmpada na intensidade {self.intensidade}'
     
     def desligar(self):
-        print(f'Lâmpada desligada.')
         self.status = 'Desligada'
-        return
+        return f'Lâmpada desligada.'
     
     def status(self):
         if self.status == 'Desligada':
-            print(f'A Lâmpada está {self.status}.')
+            return f'A Lâmpada está {self.status}.'
         elif self.status == 'Ligada':
-            print(f'A Lâmpada está {self.status} na intensidade {self.intensidade}.')
+            return f'A Lâmpada está {self.status} na intensidade {self.intensidade}.'
         else:
             raise Exception('Você precisa ligar ou desligar o dispositivo!')
-        return
 
 
 class ArCondicionado(Dispositivo):
@@ -873,23 +870,20 @@ class ArCondicionado(Dispositivo):
         return
     
     def ligar(self):
-        print(f'Ligando o Ar Condicionado na temperatura {self.temperatura}°')
         self.status = 'Ligado'
-        return
+        return f'Ligando o Ar Condicionado na temperatura {self.temperatura}°'
     
     def desligar(self):
-        print(f'Ar condicionado desligado.')
         self.status = 'Desligado'
-        return
+        return f'Ar condicionado desligado.'
     
     def status(self):
         if self.status == 'Desligado':
-            print(f'O Ar Condicionado está {self.status}.')
+            return f'O Ar Condicionado está {self.status}.'
         elif self.status == 'Ligado':
-            print(f'O Ar Condicinado está {self.status} na intensidade {self.intensidade}.')
+            return f'O Ar Condicinado está {self.status} na intensidade {self.intensidade}.'
         else:
             raise Exception('Você precisa ligar ou desligar o dispositivo!')
-        return
     
 
 class CameraSeguranca(Dispositivo):
@@ -898,23 +892,20 @@ class CameraSeguranca(Dispositivo):
         return
 
     def ligar(self):
-        print(f'Ligando a Câmera no {self.gravacao}')
         self.status = 'Ligada'
-        return
+        return f'Ligando a Câmera no {self.gravacao}'
     
     def desligar(self):
-        print(f'Câmera desligada.')
         self.status = 'Desligada'
-        return
+        return  f'Câmera desligada.'
     
     def status(self):
         if self.status == 'Desligada':
-            print(f'A Câmera está {self.status}.')
+            return f'A Câmera está {self.status}.'
         elif self.status == 'Ligada':
-            print(f'A Câmera está {self.status} no modo {self.gravacao}.')
+            return f'A Câmera está {self.status} no modo {self.gravacao}.'
         else:
             raise Exception('Você precisa ligar ou desligar o dispositivo!')
-        return
 
 
 class Casa:
@@ -928,6 +919,7 @@ class Casa:
             raise Exception('Lista vazia.')
         else:
             print()
+            print('Desligando seus dispositivos:')
             for indice, dispositivo in enumerate(self.__dispositivos, start=1):
                 print(f'{indice} - {dispositivo.desligar()}')
             print()
@@ -946,6 +938,7 @@ class Casa:
             print('Ligando todos os dispositivos:')
             for indice, dispositivo in enumerate(self.__dispositivos, start=1):
                 print(f'{indice} - {dispositivo.ligar()}')
+            print()
 
     def exibir_relatorio(self):
         if not self.__dispositivos:
@@ -954,3 +947,4 @@ class Casa:
             print('Relatório de dispositivos:')
             for indice, dispositivo in enumerate(self.__dispositivos, start=1):
                 print(f'{indice} - {dispositivo.status()}')
+            print()
