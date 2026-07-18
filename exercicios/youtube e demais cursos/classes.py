@@ -944,3 +944,5 @@ class Casa:
             for indice, dispositivo in enumerate(self.__dispositivos, start=1):
                 print(f'{indice} - {dispositivo.status()}')
             print()
+
+# Chain of Responsibility
