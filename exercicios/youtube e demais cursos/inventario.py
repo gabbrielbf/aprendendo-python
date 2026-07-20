@@ -31,7 +31,7 @@ def main():
         match exibir_menu():
             case 1:
                 try:
-                    nome_produto = str(input('digite o nome do produto: '))
+                    nome_produto = str(input('digite o nome do produto: ')).title()
                     preco_produto = float(input('digite o preço do produto: '))
                     qtd_produto = int(input('quantidade inicial do produto: '))
                 except ValueError:
@@ -39,7 +39,10 @@ def main():
                 inserir_produto(nome_produto, preco_produto, qtd_produto)
                 print('produto adicioado com sucesso ✔️')
             case 2:
-                pass
+                if not estoque:
+                    raise Exception('estoque vazio!')
+                for indice, produto in enumerate(estoque, start=1):
+                    print(f'produto {indice} - {produto['nome']} | preço {produto['preco']} | estoque {produto['qtd_inicial']}')
             case 3:
                 pass
             case 4:
