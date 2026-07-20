@@ -1,4 +1,12 @@
+import os, time
+
 # Sistema de inventário de loja
+estoque = []
+
+def limpar_interface():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    return
+
 def exibir_menu():
     print('-'*30)
     print('1 - adicionar produto')
@@ -11,9 +19,38 @@ def exibir_menu():
     opcao = int(input('digite a opcao -> '))
     if opcao not in opcoes:
         raise Exception('opção digitada não encontrada!')
-    else:
-        return opcao
+    return opcao
     
-def inserir_produto(nome, preco, qtd_inicial):
-    pass
+def inserir_produto(nome:str, preco:float, qtd_inicial:int):
+    estoque.append({'nome':nome, 'preco':preco, 'qtd_inicial':qtd_inicial})
+    return
+
+def main():
+    while True:
+        limpar_interface()
+        match exibir_menu():
+            case 1:
+                try:
+                    nome_produto = str(input('digite o nome do produto: '))
+                    preco_produto = float(input('digite o preço do produto: '))
+                    qtd_produto = int(input('quantidade inicial do produto: '))
+                except ValueError:
+                    raise Exception('valor digitado inválido.')
+                inserir_produto(nome_produto, preco_produto, qtd_produto)
+                print('produto adicioado com sucesso ✔️')
+            case 2:
+                pass
+            case 3:
+                pass
+            case 4:
+                pass
+            case 0:
+                print('\nencerrando...\n')
+                break
+            case _:
+                pass
+        time.sleep(1.5)
+
+if __name__ == '__main__':
+    main()
 
