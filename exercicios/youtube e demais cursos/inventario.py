@@ -36,18 +36,21 @@ def vender_produto(venda, quantidade):
     
     valor_compra = 0.0
 
-    if venda not in estoque:
-        raise Exception('produto não encontrado.')
+    for indice in range(0, len(estoque)):
+        if venda not in estoque[indice]['nome']:
+            raise Exception('produto não encontrado.')
 
     for indice in range(0, len(estoque)):
         if venda == estoque[indice]['nome']:
-            if quantidade >= estoque[indice]['qtd_inicial']:
+            if estoque[indice]['qtd_inicial'] <= 0:
+                raise Exception('estoque insuficiente.')
+            else:
                 valor_compra += estoque[indice]['preco']
                 estoque[indice]['qtd_inicial'] -= quantidade
+                if estoque[indice]['qtd_inicial'] < 0:
+                    estoque[indice]['qtd_inicial'] = 0
                 print(f'você comprou {estoque[indice]['nome']} e o valor deu: {valor_compra}')
-            else:
-                raise Exception('estoque insuficiente.')
-    return
+    return valor_compra
 
 def main():
     while True:
