@@ -2,6 +2,7 @@ import os, time
 
 # Sistema de inventário de loja
 estoque = []
+lista_de_frutas = []
 
 def limpar_interface():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -23,34 +24,37 @@ def exibir_menu():
     
 def inserir_produto(nome:str, preco:float, qtd_inicial:int):
     estoque.append({'nome':nome, 'preco':preco, 'qtd_inicial':qtd_inicial})
+    for indice in range(0, len(estoque)):
+        lista_de_frutas.append(estoque[indice]['nome'])
     return
 
 def exibir_estoque():
     print('-'*30)
     for indice, produto in enumerate(estoque, start=1):
-        print(f'produto {indice} - {produto['nome']} | preço {produto['preco']} | estoque {produto['qtd_inicial']}')
+        print(f'produto {indice} - {produto['nome']:<8} | preço {produto['preco']:<4} | estoque {produto['qtd_inicial']}')
     print('-'*30)
     return
 
-def vender_produto(venda, quantidade):
+def vender_produto(venda:str, quantidade:int):
     
     valor_compra = 0.0
 
-    for indice in range(0, len(estoque)):
-        if venda not in estoque[indice]['nome']:
-            raise Exception('produto não encontrado.')
+    if venda not in lista_de_frutas:
+        raise Exception('produto não encontrado.')
 
     for indice in range(0, len(estoque)):
         if venda == estoque[indice]['nome']:
-            if estoque[indice]['qtd_inicial'] <= 0:
+            if (estoque[indice]['qtd_inicial'] <= 0 or 
+                quantidade > estoque[indice]['qtd_inicial']):
                 raise Exception('estoque insuficiente.')
             else:
                 valor_compra += estoque[indice]['preco']
                 estoque[indice]['qtd_inicial'] -= quantidade
                 if estoque[indice]['qtd_inicial'] < 0:
-                    estoque[indice]['qtd_inicial'] = 0
-                print(f'você comprou {estoque[indice]['nome']} e o valor deu: {valor_compra}')
-    return valor_compra
+                    estoque[indice]['qtd_inicial'] = 0 # <- Essa linha de código foi criada puramente para exibir '0'
+                                                        # quando o usuário selecionar a opção 2 no menu inicial
+                print(f'você comprou {quantidade} unidades de {estoque[indice]['nome']} e o valor deu: {valor_compra}')
+    return 
 
 def main():
     while True:
@@ -58,7 +62,7 @@ def main():
         match exibir_menu():
             case 1:
                 try:
-                    nome_produto = str(input('digite o nome do produto: ')).title()
+                    nome_produto = str(input('digite o nome do produto: ')).title().strip()
                     preco_produto = float(input('digite o preço do produto: '))
                     qtd_produto = int(input('quantidade inicial do produto: '))
                 except ValueError:
@@ -72,7 +76,7 @@ def main():
             case 3:
                 exibir_estoque()
                 try:
-                    venda = str(input('o que deseja comprar -> ')).title()
+                    venda = str(input('o que deseja comprar -> ')).title().strip()
                     quantidade = int(input('quantas un. deseja comprar -> '))
                 except ValueError:
                     raise Exception('valor digitado inválido.')
@@ -85,7 +89,7 @@ def main():
                 break
             case _:
                 pass
-        time.sleep(1.5)
+        time.sleep(2)
 
 if __name__ == '__main__':
     main()
