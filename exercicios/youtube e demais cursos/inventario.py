@@ -2,7 +2,6 @@ import os, time
 
 # Sistema de inventário de loja
 estoque = []
-valor_compra = 0
 
 def limpar_interface():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -27,21 +26,27 @@ def inserir_produto(nome:str, preco:float, qtd_inicial:int):
     return
 
 def exibir_estoque():
+    print('-'*30)
     for indice, produto in enumerate(estoque, start=1):
         print(f'produto {indice} - {produto['nome']} | preço {produto['preco']} | estoque {produto['qtd_inicial']}')
+    print('-'*30)
     return
 
 def vender_produto(venda, quantidade):
-    for _ in estoque:
-        if venda == estoque['nome']:
-            if quantidade > estoque['qtd_inicial']:
-                valor_compra += estoque['preco']
-                estoque['qtd_inicial'] -= quantidade
-                print(f'você comprou {estoque['nome']} e o valor deu: {valor_compra}')
+    
+    valor_compra = 0.0
+
+    if venda not in estoque:
+        raise Exception('produto não encontrado.')
+
+    for indice in range(0, len(estoque)):
+        if venda == estoque[indice]['nome']:
+            if quantidade >= estoque[indice]['qtd_inicial']:
+                valor_compra += estoque[indice]['preco']
+                estoque[indice]['qtd_inicial'] -= quantidade
+                print(f'você comprou {estoque[indice]['nome']} e o valor deu: {valor_compra}')
             else:
                 raise Exception('estoque insuficiente.')
-        else:
-            raise Exception('produto não encontrado.')
     return
 
 def main():
