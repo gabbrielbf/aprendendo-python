@@ -56,6 +56,9 @@ def vender_produto(venda:str, quantidade:int):
                 print(f'você comprou {quantidade} unidades de {estoque[indice]['nome']} e o valor deu: {valor_compra}')
     return 
 
+def repor_produto(produto:str, quantidade:int):
+    pass
+
 def main():
     while True:
         limpar_interface()
@@ -80,10 +83,15 @@ def main():
                     quantidade = int(input('quantas un. deseja comprar -> '))
                 except ValueError:
                     raise Exception('valor digitado inválido.')
-                
                 vender_produto(venda, quantidade)
             case 4:
-                pass
+                exibir_estoque()
+                try:
+                    produto = str(input('qual produto deseja repor da lista acima -> ')).title().strip()
+                    quantidade = int(input('quantas un. deseja repor -> '))
+                except ValueError:
+                    raise Exception('valor digitado inválido.')
+                repor_produto(produto, quantidade)
             case 0:
                 print('\nencerrando...\n')
                 break
