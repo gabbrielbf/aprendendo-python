@@ -24,6 +24,7 @@ def exibir_menu():
     
 def inserir_produto(nome:str, preco:float, qtd_inicial:int):
     estoque.append({'nome':nome, 'preco':preco, 'qtd_inicial':qtd_inicial})
+    print(f'o produto {nome} foi adicionado com sucesso ✔️')
     for indice in range(0, len(estoque)):
         lista_de_frutas.append(estoque[indice]['nome'])
     return
@@ -48,7 +49,7 @@ def vender_produto(venda:str, quantidade:int):
                 quantidade > estoque[indice]['qtd_inicial']):
                 raise Exception('estoque insuficiente.')
             else:
-                valor_compra += estoque[indice]['preco']
+                valor_compra += (estoque[indice]['preco'] * quantidade)
                 estoque[indice]['qtd_inicial'] -= quantidade
                 if estoque[indice]['qtd_inicial'] < 0:
                     estoque[indice]['qtd_inicial'] = 0 # <- Essa linha de código foi criada puramente para exibir '0'
@@ -57,7 +58,17 @@ def vender_produto(venda:str, quantidade:int):
     return 
 
 def repor_produto(produto:str, quantidade:int):
-    pass
+
+    if produto not in lista_de_frutas:
+        raise Exception('produto não encontrado.')
+    
+    if quantidade <= 0:
+        raise Exception('digite um valor maior que zero!')
+    
+    for indice in range(0, len(estoque)):
+        if produto == estoque[indice]['nome']:
+            estoque[indice]['qtd_inicial'] += quantidade
+            print(f'estoque atualizado com sucesso ✔️\n o produto{estoque[indice]['nome']} agora possui {estoque[indice]['qtd_inicial']} itens.')
 
 def main():
     while True:
@@ -71,7 +82,6 @@ def main():
                 except ValueError:
                     raise Exception('valor digitado inválido.')
                 inserir_produto(nome_produto, preco_produto, qtd_produto)
-                print('produto adicionado com sucesso ✔️')
             case 2:
                 if not estoque:
                     raise Exception('estoque vazio!')
