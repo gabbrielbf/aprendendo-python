@@ -43,10 +43,10 @@ def vender_produto(venda:str, quantidade:int):
     if venda not in lista_de_frutas:
         raise Exception('produto não encontrado.')
 
-    for indice in range(0, len(estoque)):
-        if venda == estoque[indice]['nome']:
-            if (estoque[indice]['qtd_inicial'] <= 0 or 
-                quantidade > estoque[indice]['qtd_inicial']):
+    for indice, produto in enumerate(estoque):
+        if venda == produto['nome']:
+            if (produto['qtd_inicial'] <= 0 or 
+                quantidade > produto['qtd_inicial']):
                 raise Exception('estoque insuficiente.')
             else:
                 valor_compra += (estoque[indice]['preco'] * quantidade)
@@ -54,7 +54,7 @@ def vender_produto(venda:str, quantidade:int):
                 if estoque[indice]['qtd_inicial'] < 0:
                     estoque[indice]['qtd_inicial'] = 0 # <- Essa linha de código foi criada puramente para exibir '0'
                                                         # quando o usuário selecionar a opção 2 no menu inicial
-                print(f'você comprou {quantidade} unidades de {estoque[indice]['nome']} e o valor deu: {valor_compra}')
+                print(f'você comprou {quantidade} unidades de {produto['nome']} e o valor deu: {valor_compra}')
     return 
 
 def repor_produto(produto:str, quantidade:int):
@@ -68,7 +68,7 @@ def repor_produto(produto:str, quantidade:int):
     for indice in range(0, len(estoque)):
         if produto == estoque[indice]['nome']:
             estoque[indice]['qtd_inicial'] += quantidade
-            print(f'estoque atualizado com sucesso ✔️\n o produto{estoque[indice]['nome']} agora possui {estoque[indice]['qtd_inicial']} itens.')
+            print(f'estoque atualizado com sucesso ✔️\n o produto {estoque[indice]['nome']} agora possui {estoque[indice]['qtd_inicial']} itens.')
 
 def main():
     while True:
