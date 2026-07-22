@@ -2,7 +2,6 @@ import os, time
 
 # Sistema de inventário de loja
 estoque = []
-lista_de_frutas = []
 
 def limpar_interface():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -25,8 +24,6 @@ def exibir_menu():
 def inserir_produto(nome:str, preco:float, qtd_inicial:int):
     estoque.append({'nome':nome, 'preco':preco, 'qtd_inicial':qtd_inicial})
     print(f'o produto {nome} foi adicionado com sucesso ✔️')
-    for indice in range(0, len(estoque)):
-        lista_de_frutas.append(estoque[indice]['nome'])
     return
 
 def exibir_estoque():
@@ -40,7 +37,9 @@ def vender_produto(venda:str, quantidade:int):
     
     valor_compra = 0.0
 
-    if venda not in lista_de_frutas:
+    for indice, item in enumerate(estoque):
+        if venda == item['nome']:
+            break
         raise Exception('produto não encontrado.')
 
     for indice, item in enumerate(estoque):
@@ -59,7 +58,9 @@ def vender_produto(venda:str, quantidade:int):
 
 def repor_produto(produto:str, quantidade:int):
 
-    if produto not in lista_de_frutas:
+    for indice, item in enumerate(estoque):
+        if produto == item['nome']:
+            break
         raise Exception('produto não encontrado.')
     
     if quantidade <= 0:
@@ -68,7 +69,7 @@ def repor_produto(produto:str, quantidade:int):
     for indice, item in enumerate(estoque):
         if produto == item['nome']:
             item['qtd_inicial'] += quantidade
-            print(f'estoque atualizado com sucesso ✔️\n o produto {item['nome']} agora possui {item['qtd_inicial']} itens.')
+            print(f'estoque atualizado com sucesso ✔️\no produto {item['nome']} agora possui {item['qtd_inicial']} itens.')
 
 def main():
     while True:
