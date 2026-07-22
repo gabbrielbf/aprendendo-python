@@ -3,8 +3,6 @@ def validar_senha(senha):
         for caractere in senha:
             if caractere in ('0123456789'):
                 return True
-            else:
-                continue
     return False
 
 while True:
