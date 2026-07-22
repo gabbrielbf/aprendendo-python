@@ -37,9 +37,15 @@ def vender_produto(venda:str, quantidade:int):
     
     valor_compra = 0.0
 
+    encontrado = False
     for indice, item in enumerate(estoque):
         if venda == item['nome']:
+            encontrado = True
             break
+        else:
+            continue
+
+    if encontrado == False:
         raise Exception('produto não encontrado.')
 
     for indice, item in enumerate(estoque):
@@ -58,11 +64,17 @@ def vender_produto(venda:str, quantidade:int):
 
 def repor_produto(produto:str, quantidade:int):
 
+    encontrado = False
     for indice, item in enumerate(estoque):
         if produto == item['nome']:
+            encontrado = True
             break
+        else:
+            continue
+        
+    if encontrado == False:
         raise Exception('produto não encontrado.')
-    
+
     if quantidade <= 0:
         raise Exception('digite um valor maior que zero!')
     
