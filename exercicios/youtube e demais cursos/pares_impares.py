@@ -1,3 +1,5 @@
+import random
+
 def separar_pares_e_impares(lista_numeros):
     lista_pares = []
     lista_impares = []
@@ -10,7 +12,11 @@ def separar_pares_e_impares(lista_numeros):
 
     return lista_pares, lista_impares
 
-lista_numeros = [1, 3, 4, 5, 6, 2, 7, 9, 8, 12, 15, 10, 25, 33, 19]
+lista_numeros = []
+
+for numero in range(0, 51):
+    valor = random.randint(1, 101)
+    lista_numeros.append(valor)
 lista_pares, lista_impares = separar_pares_e_impares(lista_numeros)
 
 print(f'lista de pares: {lista_pares}')
