@@ -15,21 +15,27 @@ def exibir_menu():
     print('4 - repor produto')
     print('0 - sair')
     print('-'*30)
-    opcoes = (0, 1, 2, 3, 4)
-    opcao = int(input('digite a opcao -> '))
-    if opcao not in opcoes:
-        raise Exception('opção digitada não encontrada!')
+    while True:
+        try:
+            opcao = int(input('digite a opcao -> '))
+        except ValueError:
+            print('[ERRO] valor inválido')
+        if opcao not in range(0, 5):
+            print('[ERRO] digite um valor dentre [0 e 4]')
+            continue
+        else:
+            break
     return opcao
     
-def inserir_produto(nome:str, preco:float, qtd_inicial:int):
-    estoque.append({'nome':nome, 'preco':preco, 'qtd_inicial':qtd_inicial})
+def inserir_produto(nome:str, preco:float, qtd_estoque:int):
+    estoque.append({'nome':nome, 'preco':preco, 'qtd_estoque':qtd_estoque})
     print(f'o produto {nome} foi adicionado com sucesso ✔️')
     return
 
 def exibir_estoque():
     print('-'*30)
     for indice, produto in enumerate(estoque, start=1):
-        print(f'produto {indice} - {produto['nome']:<8} | preço {produto['preco']:<4} | estoque {produto['qtd_inicial']}')
+        print(f'produto {indice} - {produto['nome']:<8} | preço {produto['preco']:<4} | estoque {produto['qtd_estoque']}')
     print('-'*30)
     return
 
@@ -50,14 +56,14 @@ def vender_produto(venda:str, quantidade:int):
 
     for indice, item in enumerate(estoque):
         if venda == item['nome']:
-            if (item['qtd_inicial'] <= 0 or 
-                quantidade > item['qtd_inicial']):
+            if (item['qtd_estoque'] <= 0 or 
+                quantidade > item['qtd_estoque']):
                 raise Exception('estoque insuficiente.')
             else:
                 valor_compra += (item['preco'] * quantidade)
-                item['qtd_inicial'] -= quantidade
-                if item['qtd_inicial'] < 0:
-                    item['qtd_inicial'] = 0 # <- Essa linha de código foi criada puramente para exibir '0'
+                item['qtd_estoque'] -= quantidade
+                if item['qtd_estoque'] < 0:
+                    item['qtd_estoque'] = 0 # <- Essa linha de código foi criada puramente para exibir '0'
                                                         # quando o usuário selecionar a opção 2 no menu inicial
                 print(f'você comprou {quantidade} unidades de {item['nome']} e o valor deu: {valor_compra}')
     return 
@@ -80,8 +86,8 @@ def repor_produto(produto:str, quantidade:int):
     
     for indice, item in enumerate(estoque):
         if produto == item['nome']:
-            item['qtd_inicial'] += quantidade
-            print(f'estoque atualizado com sucesso ✔️\no produto {item['nome']} agora possui {item['qtd_inicial']} itens.')
+            item['qtd_estoque'] += quantidade
+            print(f'estoque atualizado com sucesso ✔️\no produto {item['nome']} agora possui {item['qtd_estoque']} itens.')
 
 def main():
     while True:
@@ -93,33 +99,43 @@ def main():
                     preco_produto = float(input('digite o preço do produto: '))
                     qtd_produto = int(input('quantidade inicial do produto: '))
                 except ValueError:
-                    raise Exception('valor digitado inválido.')
+                    Exception('valor digitado inválido.')
                 inserir_produto(nome_produto, preco_produto, qtd_produto)
             case 2:
                 if not estoque:
-                    raise Exception('estoque vazio!')
+                    print('estoque vazio!')
+                    time.sleep(0.8)
+                    continue
                 exibir_estoque()
             case 3:
+                if not estoque:
+                    print('estoque vazio!')
+                    time.sleep(0.8)
+                    continue
                 exibir_estoque()
                 try:
                     venda = str(input('o que deseja comprar -> ')).title().strip()
                     quantidade = int(input('quantas un. deseja comprar -> '))
                 except ValueError:
-                    raise Exception('valor digitado inválido.')
+                    print('valor digitado inválido.')
                 vender_produto(venda, quantidade)
             case 4:
+                if not estoque:
+                    print('estoque vazio!')
+                    time.sleep(0.8)
+                    continue
                 exibir_estoque()
                 try:
                     produto = str(input('qual produto deseja repor da lista acima -> ')).title().strip()
                     quantidade = int(input('quantas un. deseja repor -> '))
                 except ValueError:
-                    raise Exception('valor digitado inválido.')
+                    Exception('valor digitado inválido.')
                 repor_produto(produto, quantidade)
             case 0:
                 print('\nencerrando...\n')
                 break
             case _:
-                pass
+                print('digite um valor dentre 0 e 4')
         time.sleep(2)
 
 if __name__ == '__main__':
