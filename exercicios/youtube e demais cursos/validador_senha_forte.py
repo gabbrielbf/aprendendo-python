@@ -1,7 +1,7 @@
 def validar_senha(senha):
     if len(senha) >= 8:
-        for letra in senha:
-            if type(letra) in senha == int:
+        for caractere in senha:
+            if caractere in ('0123456789'):
                 return True
             else:
                 continue
