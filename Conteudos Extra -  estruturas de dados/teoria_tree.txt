@@ -19,8 +19,8 @@ Floresta: São vários conjuntos de 2 ou mais nós isolados não ligados um ao o
      / \   \
     D   E   F
            / \
-          G   VAZIO <- Quando possuimos algum dos lados de um nó vazio presente nos filhos dos nós antecessores
-                       denominamos ele como VAZIO para preencher determinado espaço "obsoleto". Tal como o C e o F.
+          G   NONE <- Quando possuimos algum dos lados de um nó vazio presente nos filhos dos nós antecessores
+                       denominamos ele como NONE para preencher determinado espaço "obsoleto". Tal como o C e o F.
 
     Podemos perceber que cada sub-árvore do exemplo de árvore citado acima é também uma árvore binária, B tem dois filhos D e E e seguindo
     o conceito inicial de árvore binária, D e E também seriam obrigados a implementear dois filhos cada.

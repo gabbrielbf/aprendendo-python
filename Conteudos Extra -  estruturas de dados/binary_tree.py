@@ -21,8 +21,19 @@ class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulan
 
         return
 
-    def simetric_search(self):
-        pass
+    # método que faz o percurso em ordem simétrica
+    def simetric_search(self, node=None):
+        if node is None: # <- esse bloco confere se o nó está vazio, caso sim, percorra a partir da raiz
+            node = self.root
+
+        if node.left:
+            self.simetric_search(node.left) # <- exibindo os itens sempre partindo da esquerda caso exista item na posição
+
+        print(node) # <- exibindo o item central
+
+        if node.right:
+            self.simetric_search(node.right) # exibindo o próximo item, direita 
+        return
 
 def main():
     # tree = BinaryTree(4) # <- Definindo a raiz da árvore
@@ -54,6 +65,7 @@ def main():
     n2.right = n3
 
     tree.root = n2
+    tree.simetric_search()
 
     return
 
