@@ -68,7 +68,7 @@ def main():
 
     tree.root = n2
     tree.simetric_search()
-    print('Resultado:', (7+(8*((25/3)-9)))) # <- valores ilusórios para fins didáticos
+    print(' = ', (7+(8*((25/3)-9)))) # <- valores ilusórios para fins didáticos
 
     return
 

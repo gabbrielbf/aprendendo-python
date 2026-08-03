@@ -1,0 +1,54 @@
+- Começando os estudos do que se tratam árvores no geral
+
+O que são nós? Ligação de informações não lineares através de uma raiz específica, um exemplo seriam as listas encadeadas.
+O que são folhas? Nós isolados no fim das árvores sem ligações abaixo deles.
+ Ex.
+        A <- Raiz, pai de B, C mas não de D. Porém o A seria o "ancestral" de D
+       / \  
+      B   C <- Estrutura da árvore
+           \
+            D <-  Folha
+
+Floresta: São vários conjuntos de 2 ou mais nós isolados não ligados um ao outro
+
+- Árvore binária, o que é? É um modelo de árvore que obriga o dev a fornecer exatamente 2 filhos a cada nó.
+ Ex.
+        A <- Raiz
+       / \
+      B   C <- B, C e F são nós interiores, nós que não são nem folhas e nem a raiz
+     / \   \
+    D   E   F
+           / \
+          G   NONE <- Quando possuimos algum dos lados de um nó vazio presente nos filhos dos nós antecessores
+                       denominamos ele como NONE para preencher determinado espaço "obsoleto". Tal como o C e o F.
+
+    Podemos perceber que cada sub-árvore do exemplo de árvore citado acima é também uma árvore binária, B tem dois filhos D e E e seguindo
+    o conceito inicial de árvore binária, D e E também seriam obrigados a implementear dois filhos cada.
+
+Altura, profundidade e caminhos em ÁRVORES:
+
+ Modelo ex.
+                A <- Raiz
+              /   \___
+             B        E
+            / \      /
+  folha -> C   D    F
+              / \    \
+    folha -> G   H    J <- folha
+                  \   
+          folha -> I 
+
+- Caminho é a sequência de nós que estão interligados entre si onde conseguimos avançar entre eles por meio de arestas conectadas na árvore
+ Ex.
+    O caminho para chegar a variavel G é determinado por B, D e por último G
+O que é o comprimento de um determinado caminho? Seria o número total de nós que estão dentro do caminho, que no caso do exemplo acima seria 3. B, D e G
+
+
+- Altura é comprimento do caminho entre a raiz e uma folha de maior profundidade
+O que seria a profundidade? É a distância do caminho de determando nó até a raiz da árvore
+ Ex.
+    A raiz tem profundidade 1, pois o caminho dela até ela mesma é apenas A
+    Os nós B e E tem profundidade 2
+    Os nós C, D e F tem profundidade 3
+    Os nós G, H e J tem profundidade 4
+    O nó I tem profundidade 5, a altura dessa árvore seria o caminho traçado desse nó até a raiz
