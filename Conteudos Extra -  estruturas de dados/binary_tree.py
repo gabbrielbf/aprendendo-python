@@ -47,15 +47,15 @@ def main():
     # print(tree.root.right)
 
     tree = BinaryTree()
-    n1 = Node('a')
+    n1 = Node('7')
     n2 = Node('+')
     n3 = Node('*')
-    n4 = Node('b')
+    n4 = Node('8')
     n5 = Node('-')
     n6 = Node('/')
-    n7 = Node('c')
-    n8 = Node('d')
-    n9 = Node('e')
+    n7 = Node('25')
+    n8 = Node('3')
+    n9 = Node('9')
 
     n6.left = n7
     n6.right = n8
@@ -68,6 +68,7 @@ def main():
 
     tree.root = n2
     tree.simetric_search()
+    print('Resultado:', (7+(8*((25/3)-9)))) # <- valores ilusórios para fins didáticos
 
     return
 
