@@ -27,12 +27,14 @@ class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulan
             node = self.root
 
         if node.left:
+            print('(', end='') # <- exibindo parenteses de abertura antes de terminar a sub-árvore da esquerda
             self.simetric_search(node.left) # <- exibindo os itens sempre partindo da esquerda caso exista item na posição
 
-        print(node) # <- exibindo o item central
+        print(node, end='') # <- exibindo o item central com o "end='" para exibir tudo na mesma linha
 
         if node.right:
-            self.simetric_search(node.right) # exibindo o próximo item, direita 
+            self.simetric_search(node.right) # exibindo o próximo item, direita
+            print(')', end='') # <- exibindo parenteses de abertura antes de terminar a sub-árvore da esquerda
         return
 
 def main():
