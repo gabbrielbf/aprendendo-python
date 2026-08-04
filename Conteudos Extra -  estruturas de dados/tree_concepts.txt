@@ -27,7 +27,7 @@ Floresta: São vários conjuntos de 2 ou mais nós isolados não ligados um ao o
     Podemos perceber que cada sub-árvore do exemplo de árvore citado acima é também uma árvore binária, B tem dois filhos D e E e seguindo
     o conceito inicial de árvore binária, D e E também seriam obrigados a implementear dois filhos cada.
 
-Altura, profundidade e caminhos em ÁRVORES:
+- Altura, profundidade e caminhos em ÁRVORES:
 
  Modelo ex.
                 A <- Raiz
@@ -133,3 +133,5 @@ O exemplo abaixo seguido de notações irá facilitar a compreensão com conjunt
             
             # https://www.youtube.com/watch?v=JAeQuNsKQWk <- Explicação detalhada das resoluções
   
+- Percursos em árvores
+
