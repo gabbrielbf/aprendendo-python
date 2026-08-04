@@ -104,3 +104,12 @@ qual a altura máxima e mínima que conseguimos construir com esses mesmos 5 dad
               portanto: 1 + 2 = 3
 
               e de fato, se formos seguir a notação presente na árvore exemplar mínima, vamos que tem exatamente 3 níveis de profundidade.
+       
+       Notação autoexplicativa:
+           
+           No primeiro nível temos a raiz, um único elemento - 1
+           No segundo nível temos 2 elementos, logo dobramos o valor - 2
+           No terceiro nível usamos a mesma ideologia de antes e dobramos novamente caso tivessemos na árvore exemplar um parceiro
+           a direita do nó F - 4
+
+           O mesmo valeria para os filhos sub-sequuentes: 8, 16, 32 e por aí vai... Seguindo a metodologia das potências de 2
