@@ -1,5 +1,7 @@
 - Começando os estudos do que se tratam árvores no geral
 
+* VALORES A DIREITA SÃO MAIORES QUE OS DA ESQUERDA <- ISSO É REGRA PRÉ DEFINIDA! *
+
 O que são nós? Ligação de informações não lineares através de uma raiz específica, um exemplo seriam as listas encadeadas.
 O que são folhas? Nós isolados no fim das árvores sem ligações abaixo deles.
  Ex.
