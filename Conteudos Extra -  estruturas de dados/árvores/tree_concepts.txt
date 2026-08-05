@@ -164,3 +164,21 @@ O exemplo abaixo seguido de notações irá facilitar a compreensão com conjunt
       5° exibição: S
 
     - (percurso_nivel.py)
+
+- Árvore binária de busca, o que é? Tudo que sabemos até aqui sobre árvore no geral, serve para a árvore binária de busca. Seu diferencial
+  é que sempre que olhamos para um nó x, sabemos por padrão que a esquerda dele sempre teremos valores menores que o próprio nó em si e a direita
+  por consequência sempre terão valores maiores. Essa é a estrutura de dados que vai codificar em si a BUSCA BINÁRIA: https://www.youtube.com/watch?v=zSyV0VaTF3k&pp=ygUOYnVzY2EgYmluw6FyaWE%3D
+
+  Ex.
+    [61, 89, 66, 43, 51, 16, 55, 11, 79, 77, 82, 32]
+
+                    ___61___
+                ___/        \___
+               /                \
+             43                  89
+            /  \                /  
+          16    51            66 
+         /  \     \             \
+       11    32    55            79
+                                /  \
+                              77    32
