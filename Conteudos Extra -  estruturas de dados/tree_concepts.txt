@@ -135,3 +135,8 @@ O exemplo abaixo seguido de notações irá facilitar a compreensão com conjunt
   
 - Percursos em árvores
 
+  O que é percurso em uma árvore? É uma forma sistemática de passar por todos os nós presentes em uma árvore, quer dizer que não é uma forma qualquer
+  no qual não podemos olhar para a raiz, em seguida para uma folha qualquer, não! Essa nomeclatura se dá justamente por existir um padrão, uma ordem pré-definida
+  criada para fazermos uma VISITA SISTEMÁTICA aos nós da árvore.
+
+  
