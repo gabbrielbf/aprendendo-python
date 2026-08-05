@@ -1,0 +1,13 @@
+Pull Request:
+    É um tipo de solicitação formal para integrar (mesclar/merge) alterações de código feitas em ramo paralelo (branch) ao ramo principal 
+    de um projeto (como a main ou master).
+
+ Para que serve?
+    Permite que outros desenvolvedores analisem o código, façam perguntas, 
+    sugiram melhorias e detectem bugs antes que as alterações afetem o projeto principal.
+
+    Automação e Testes (CI/CD): Dispara rotinas automatizadas que verificam se o novo código passa nos testes, 
+    segue os padrões de estilo e não quebra a aplicação.
+
+    Funciona como um registro centralizado que explica o que foi alterado, 
+    por que foi alterado e quais decisões foram tomadas pela equipe.
