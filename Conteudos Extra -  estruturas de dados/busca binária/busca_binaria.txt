@@ -1,0 +1,38 @@
+A busca binária é um algoritmo super eficiente para encontrar um item 
+em uma lista que JÁ ESTÁ ORDENADA (em ordem crescente ou decrescente).
+
+- Pensamos em como devemos procurar uma palavra em um dicionário de papel: Lemos desde a primeira
+  página até achar a palavra. Em vez disso, você abre o dicionário bem no meio:
+
+    1. Se a palavra que você procura vier depois da página onde abriu, você joga fora (ignora) toda a metade esquerda.
+    2. Se vier antes, você joga fora a metade direita.
+    3. Você repete esse processo com a metade que sobrou, dividindo-o sempre ao meio, até achar a palavra exata.
+
+    Ex.
+        Imagine que você tem uma lista de números de 1 a 100 e quer achar o número 72:
+
+        Tentativa 1: Você olha bem no meio, que é o 50. Como 72 é maior que 50, você elimina tudo do 1 ao 50. Sobraram os números de 51 a 100.
+        Tentativa 2: O meio desse novo pedaço é 75. Como 72 é menor que 75, você elimina tudo de 75 para cima. Sobraram os números de 51 a 74.
+        Tentativa 3: O meio agora é 62. Como 72 é maior, você elimina do 51 ao 62.
+
+        O processo continua rapidinho até o número 72 ser encontrado.
+
+Vantagens:
+    Velocidade: Enquanto uma busca comum (olhar item por item) pode demorar muito em listas gigantes, 
+    a busca binária corta o caminho pela metade a cada passo.
+
+    Grande escala: Para procurar um item em uma lista com 1 bilhão de elementos, a busca binária faz no máximo 30 passos.
+
+Desvantagens:
+    Exige que a lista esteja ordenada: A maior desvantagem é que a busca binária não funciona em listas desorganizadas. 
+    Se os dados estiverem fora de ordem, primeiro necessitamos gastar tempo (e processamento) 
+    ordenando a lista antes de poder usar o algoritmo.
+
+    Não funciona bem em estruturas encadeadas (como Listas Ligadas): O algoritmo precisa acessar diretamente o elemento do "meio" 
+    de forma instantânea. Em estruturas como arrays ou vetores, isso é fácil, mas em listas encadeadas (linked lists), 
+    o computador precisa caminhar item por item até o meio, o que estraga a vantagem de velocidade do algoritmo.
+
+    Complexidade para dados que mudam o tempo todo: Se temos uma lista onde itens são inseridos e removidos constantemente, 
+    mantê-la ordenada o tempo todo para poder usar a busca binária pode dar mais trabalho 
+    (e gastar mais processamento) do que o benefício que ela traz. Nestes casos, outras estruturas de dados 
+    (como árvores binárias ou tabelas hash) costumam ser mais recomendadas.
