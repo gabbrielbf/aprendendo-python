@@ -26,3 +26,20 @@ Open Source:
     Liberdade de Uso e Adaptação: O código pode ser adaptado para atender às necessidades específicas de uma pessoa ou empresa.
 
     Licenciamento Aberto: O projeto é regido por licenças (como MIT, Apache ou GPL) que garantem essas liberdades e definem regras de redistribuição.
+
+Issue:
+    é um registro usado em plataformas de hospedagem de código (como GitHub, GitLab e Bitbucket) para organizar, 
+    discutir e rastrear tudo o que precisa ser feito ou corrigido em um projeto de software.
+
+    Se a Pull Request (PR) é o código pronto que queremos entregar, a Issue é o debate ou a demanda que vem antes do código.
+
+ Como uma Issue se conecta com uma PR(Pull Request)?
+    O fluxo padrão de desenvolvimento une os dois conceitos:
+
+    Alguém abre uma Issue: "A tela de login está travando ao digitar a senha".
+
+    Um desenvolvedor assume a Issue e cria um ramo (branch) para resolver o problema.
+
+    Quando a solução está pronta, ele abre uma Pull Request (PR) apontando para a Issue original (ex: "Fixes #42").
+
+    Assim que a PR é aprovada e mesclada (merged), a Issue é fechada automaticamente.
