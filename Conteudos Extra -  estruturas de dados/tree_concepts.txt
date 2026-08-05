@@ -139,4 +139,14 @@ O exemplo abaixo seguido de notações irá facilitar a compreensão com conjunt
   no qual não podemos olhar para a raiz, em seguida para uma folha qualquer, não! Essa nomeclatura se dá justamente por existir um padrão, uma ordem pré-definida
   criada para fazermos uma VISITA SISTEMÁTICA aos nós da árvore.
 
-  
+   Modelo ex.
+                    3 <- Raiz
+               ___/   \___
+              /           \
+             E             5
+            / \           /
+           I   R         A
+              / \         \
+             N   C         V
+                  \
+                   S
