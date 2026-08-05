@@ -43,3 +43,22 @@ Issue:
     Quando a solução está pronta, ele abre uma Pull Request (PR) apontando para a Issue original (ex: "Fixes #42").
 
     Assim que a PR é aprovada e mesclada (merged), a Issue é fechada automaticamente.
+
+ Good First Issue:
+    é uma tag ou marcação frequentemente usada em projetos de software de código aberto, especialmente em repositórios 
+    hospedados em plataformas como GitHub, GitLab ou Bitbucket. Essa tag indica que o problema ou tarefa 
+    é adequado para pessoas que estão começando a contribuir para o projeto, 
+    incluindo iniciantes no desenvolvimento de software ou pessoas novas naquele projeto específico.
+
+    Projetos grandes podem ser intimidantes para quem está chegando agora. 
+    A label good-first-issue serve como um sinalizador dizendo: "Pode vir por aqui, este é um ótimo ponto de partida!".
+
+    Características de uma Good Issue:
+        1. Simples o suficiente: A tarefa não exige um entendimento profundo do código ou do sistema.
+
+        2. Bem documentada: Inclui descrições claras sobre o que precisa ser feito, onde encontrar o problema no código, e possíveis passos para resolvê-lo.
+        
+        3. Impactante: Apesar de simples, a tarefa deve ter algum valor para o projeto, como corrigir pequenos bugs, 
+        melhorar a documentação ou implementar funcionalidades básicas.
+
+        4. Curva de aprendizado baixa: Evita áreas muito complexas do código ou dependências difíceis.
