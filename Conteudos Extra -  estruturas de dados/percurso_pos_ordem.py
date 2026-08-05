@@ -49,6 +49,27 @@ class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulan
  
         print(node) # e por fim, exibindo a raiz, que no caso seria o nó da vez a ser exibido
 
+    def height(self, node=None): # replicando o método acima aqui abaixo para calcular a altura de determinado lado de a árvore 
+        if node is None:
+            node = self.root 
+
+        height_left = 0 # { valores iniciam com zero pois nas condicionais abaixo conferimos SE o valor do nó possui elemento
+        height_right = 0 # } caso possua fazemos o cálculo, se não o valor se mantém em zero.
+
+        if node.left:
+            height_left = self.height(node.left) 
+
+        if node.right:
+            height_right = self.height(node.right) 
+
+        # abaixo está a lógica do cálculo responsável pela altura do bloco
+        if height_right > height_left:
+            return height_right + 1
+        else:
+            return height_left + 1
+ 
+        print(node) 
+
 def posorder_tree():
     tree = BinaryTree()
 
@@ -79,4 +100,7 @@ def posorder_tree():
 if __name__ == '__main__':
     tree = posorder_tree()
     print('Percurso em pós ordem: ')
+    print('-'*10)
     tree.posorder_search()
+    print('-'*10)
+    print(f'Altura: {tree.height()}')  
