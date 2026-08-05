@@ -62,3 +62,10 @@ Issue:
         melhorar a documentação ou implementar funcionalidades básicas.
 
         4. Curva de aprendizado baixa: Evita áreas muito complexas do código ou dependências difíceis.
+
+        Ex.
+            - Corrigir um erro de digitação na documentação.
+            - Adicionar um teste simples.
+            - Ajustar estilos em uma interface de usuário.
+            - Corrigir pequenos bugs isolados.
+            - Atualizar dependências ou melhorar comentários no código.
