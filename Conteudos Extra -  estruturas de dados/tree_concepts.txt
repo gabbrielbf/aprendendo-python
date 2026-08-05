@@ -150,3 +150,6 @@ O exemplo abaixo seguido de notações irá facilitar a compreensão com conjunt
              N   C         V
                   \
                    S
+
+  Percurso em pós ordem, o que é? É um percurso que caracteriza justamente o momemnto em que iremos visitar a raiz, é aquilo em que só visitamos a raiz
+  somente depois de visitar todos os filhos da esquerda e da direita de determinada árvore
