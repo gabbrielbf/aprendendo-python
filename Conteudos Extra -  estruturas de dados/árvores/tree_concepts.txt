@@ -152,5 +152,15 @@ O exemplo abaixo seguido de notações irá facilitar a compreensão com conjunt
                    S
 
   Percurso em pós ordem, o que é? É um percurso que caracteriza justamente o momemnto em que iremos visitar a raiz, é aquilo em que só visitamos a raiz
-  somente depois de visitar todos os filhos da esquerda e da direita de determinada árvore
+  somente depois de visitar todos os filhos da esquerda e da direita de determinada árvore - (percurso_pos_ordem.py)
 
+  Percurso em nível, o que é? Trata-se da captura de elementos presentes todos na mesma linha (no memsmo nível) como temos a árvore exemplar acima
+  podemos dizer que caso fossemos exibi-la teríamos um resultado parecido com:
+    Ex.
+      1° exibição: 3
+      2° exibição: E e 5
+      3° exibição: I, R e A
+      4° exibição: N, C e V
+      5° exibição: S
+
+    - (percurso_nivel.py)
