@@ -11,3 +11,18 @@ Pull Request:
 
     Funciona como um registro centralizado que explica o que foi alterado, 
     por que foi alterado e quais decisões foram tomadas pela equipe.
+
+Open Source:
+    é um modelo de desenvolvimento de software em que o código-fonte é disponibilizado 
+    publicamente para qualquer pessoa visualizar, modificar, aprimorar e redistribuir gratuitamente.
+
+    um bom exemlo que temos de projeto Open Source é o React: https://github.com/react/react
+
+ Os Princípios Fundamentais:
+    Transparência: Qualquer pessoa pode inspecionar como o software funciona por dentro.
+
+    Colaboração: Desenvolvedores do mundo inteiro podem contribuir corrigindo bugs, adicionando funcionalidades ou melhorando a segurança.
+
+    Liberdade de Uso e Adaptação: O código pode ser adaptado para atender às necessidades específicas de uma pessoa ou empresa.
+
+    Licenciamento Aberto: O projeto é regido por licenças (como MIT, Apache ou GPL) que garantem essas liberdades e definem regras de redistribuição.
