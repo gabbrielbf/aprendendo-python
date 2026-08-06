@@ -1,4 +1,4 @@
-# Implementando uma árvore binária
+# Implementando uma árvore binária, esse arquivo será usado como base para todos os arquivos exemplo.py criados
 
 class Node:
     def __init__(self, data):
@@ -36,6 +36,39 @@ class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulan
             self.simetric_search(node.right) # exibindo o próximo item, direita
             print(')', end='') # <- exibindo parenteses de abertura antes de terminar a sub-árvore da esquerda
         return
+
+    def posorder_search(self, node=None): # <- iniciando o valor do parâmetro para conseguir trabalhar sem inserir valores
+        if node is None:
+            node = self.root # <- se o nó estiver vazio, o nó passsa a ser a raiz
+
+        if node.left:
+            self.posorder_search(node.left) # conferindo primeiro a esquerda
+
+        if node.right:
+            self.posorder_search(node.right) # conferindo depois a direita
+ 
+        print(node) # e por fim, exibindo a raiz, que no caso seria o nó da vez a ser exibido
+
+    def height(self, node=None): # replicando o método acima aqui abaixo para calcular a altura de determinado lado de a árvore 
+        if node is None:
+            node = self.root 
+
+        height_left = 0 # { valores iniciam com zero pois nas condicionais abaixo conferimos SE o valor do nó possui elemento
+        height_right = 0 # } caso possua fazemos o cálculo, se não o valor se mantém em zero.
+
+        if node.left:
+            height_left = self.height(node.left) 
+
+        if node.right:
+            height_right = self.height(node.right) 
+
+        # abaixo está a lógica do cálculo responsável pela altura do bloco
+        if height_right > height_left:
+            return height_right + 1
+        else:
+            return height_left + 1
+
+
 
 def main():
     # tree = BinaryTree(4) # <- Definindo a raiz da árvore
