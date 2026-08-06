@@ -51,6 +51,15 @@ class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulan
  
         print(node) # e por fim, exibindo a raiz, que no caso seria o nó da vez a ser exibido
 
+    def inorder_search(self, node=None): # <- método criado para fazer a exibição dos nós de uma árvore de forma crescente/ordenada
+        if node is None: # ao invés de visitar a raiz no final igual o pós ordem, visitamos no meio da execução
+            node = self.root
+        if node.left:
+            self.inorder_search(node.left)
+        print(node, end=' ')
+        if node.right:
+            self.inorder_search(node.right)
+
     def height(self, node=None): # replicando o método acima aqui abaixo para calcular a altura de determinado lado de a árvore 
         if node is None:
             node = self.root 
@@ -69,7 +78,7 @@ class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulan
             return height_right + 1
         else:
             return height_left + 1
-
+    
 class BinarySearchTree(BinaryTree):
     def insert(self, value):
         parent = None # <- variavel criada para conferência de tamanho do valor, por ex. testamos se x é maior y, caso seja jogamos x a direita
