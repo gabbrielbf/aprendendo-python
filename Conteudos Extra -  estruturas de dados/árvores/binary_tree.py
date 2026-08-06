@@ -12,9 +12,11 @@ class Node:
         return str(self.data)
     
 class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulando os métodos e tratando os dados passados na classe Node()
-    def __init__(self, data=None):
-        if data: # <- Modificação implementada para poder usar o BinaryTree sem precisar passar algum dado como parâmetro
-            node = Node(data) # <- Objeto criado para inserir um dado a ser trata-do como a raiz da árvore
+    def __init__(self, data=None, node=None):
+        if node: # <- agora conseguimos construir uma sub-árvore a partir de um nó
+            self.root = node
+        elif data: # <- modificação implementada para poder usar o BinaryTree sem precisar passar algum dado como parâmetro
+            node = Node(data) # <- objeto criado para inserir um dado a ser trata-do como a raiz da árvore
             self.root = node
         else:
             self.root = None
@@ -85,6 +87,15 @@ class BinarySearchTree(BinaryTree):
             parent.left = Node(value)
         else:
             parent.right = Node(value)
+
+    def search(self, value, node=0): # iniciando node com zero para sabermos que nenhum valor foi passado ao nó da vez
+        if node == 0:
+            node = self.root # <- se nada foi passado, a raiz passa a ser o valor do nó
+        if node is None or node.data == value: # <- se node for vazio ou node for igual ao valor que estamos procurando na árvore binária
+            return BinarySearchTree(node) # <- não faz sentido retornar o nó em si pois isso seria válido apenas se estivessimos trabalhando com
+        # listas, já que não é o caso, podemos retornar uma sub-árvore, uma árvore que está iniciando A PARTIR daquele específico nó, para
+        # não tornar a estrutura obsoleta. Porém para seguir com essa ideia de retorno da sub-árvore precisamos parâmetrar 'node no __init__ da
+        # classe BinaryTree.
 
 # testando as primeira funcionalidade da árvore binária
 def main():
