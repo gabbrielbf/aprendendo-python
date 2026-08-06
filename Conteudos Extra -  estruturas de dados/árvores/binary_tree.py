@@ -68,8 +68,25 @@ class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulan
         else:
             return height_left + 1
 
+class BinarySearchTree(BinaryTree):
+    def insert(self, value):
+        parent = None # <- variavel criada para conferência de tamanho do valor, por ex. testamos se x é maior y, caso seja jogamos x a direita
+                        # caso não seja, irá ser alocado a esquerda.
+        x = self.root
+        while(x): # <- enquanto esse valor parâmetrado for diferente do vazio
+            parent = x # <- vamos definir o parente pelo valor da vez na raiz 
+            if value < x.data: # <- e em seguida vamos avançar esse valor do parente para alguma direção
+                x = x.left
+            else:
+                x = x.right
+        if parent is None: # <- isso aqui cria um nó com o valor parâmetrado para se tornar a raiz da árvore somente se CASO a raiz esteja vazia
+            self.root = Node(value)
+        elif value < parent.data:
+            parent.left = Node(value)
+        else:
+            parent.right = Node(value)
 
-
+# testando as primeira funcionalidade da árvore binária
 def main():
     # tree = BinaryTree(4) # <- Definindo a raiz da árvore
     # tree.root.left = Node(11) # <- Valor da esquerda
