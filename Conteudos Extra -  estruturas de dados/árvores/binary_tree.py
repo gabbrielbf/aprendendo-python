@@ -97,6 +97,11 @@ class BinarySearchTree(BinaryTree):
         # não tornar a estrutura obsoleta. Porém para seguir com essa ideia de retorno da sub-árvore precisamos parâmetrar 'node no __init__ da
         # classe BinaryTree.
 
+        if value < node.data: # <- nesse outro caso conferimos se o valor é menor que o node da vez
+            return self.search(value, node.left) # <- descendo pela esquerda pois o valor é menor que o nó da vez
+        else:
+            return self.search(value, node.right) # operação inversa
+
 # testando as primeira funcionalidade da árvore binária
 def main():
     # tree = BinaryTree(4) # <- Definindo a raiz da árvore
