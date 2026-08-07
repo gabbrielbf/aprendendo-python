@@ -177,8 +177,9 @@ O exemplo abaixo seguido de notações irá facilitar a compreensão com conjunt
                /                \
              43                  89
             /  \                /  
-          16    51            66
+          16    51            66    (binary_search_tree.py)
          /  \     \             \
        11    32    55            79
                                 /  \
                               77    32
+
