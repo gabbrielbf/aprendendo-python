@@ -141,7 +141,7 @@ class BinarySearchTree(BinaryTree):
 
         if node == 0:
             node = self.root # <- se nada foi passado, a raiz passa a ser o valor do nó
-            
+
         if node is None or node.data == value: # <- se node for vazio ou node for igual ao valor que estamos procurando na árvore binária
             return BinarySearchTree(node) # <- não faz sentido retornar o nó em si pois isso seria válido apenas se estivessimos trabalhando com
         # listas, já que não é o caso, podemos retornar uma sub-árvore, uma árvore que está iniciando A PARTIR daquele específico nó, para
@@ -153,6 +153,23 @@ class BinarySearchTree(BinaryTree):
         else:
             return self.search(value, node.right) # operação inversa
 
+    def search_min(self, node=ROOT): # <- definindo o valor de busca padrão a partir da raiz
+
+        if node == ROOT:
+            node = self.root
+
+        while node.left: # enquanto existir nó a esquerda, siga descendo até chegar no útimo nó, esse será o menor valor
+            node = node.left
+        return node.data # retornando o último nó
+
+    def search_max(self, node=ROOT):
+        if node == ROOT:
+            node = self.root
+
+        while node.right: # enquanto existir nó a direita, siga descendo até chegar no útimo nó, esse será o maior valor
+            node = node.right
+        return node.data
+    
 # testando as primeira funcionalidade da árvore binária
 def main():
     # tree = BinaryTree(4) # <- Definindo a raiz da árvore
