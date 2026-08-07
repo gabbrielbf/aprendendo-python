@@ -163,6 +163,7 @@ class BinarySearchTree(BinaryTree):
         return node.data # retornando o último nó
 
     def search_max(self, node=ROOT):
+        
         if node == ROOT:
             node = self.root
 
