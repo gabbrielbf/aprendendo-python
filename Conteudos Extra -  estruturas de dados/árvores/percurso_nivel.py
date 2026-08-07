@@ -4,4 +4,31 @@
 
 # from queue import Queue <- importado no arquivo da árvore para que consigamos fazer uso da estrutura
 
+import random
+from binary_tree import BinarySearchTree
 
+random.seed(77)
+
+def random_tree(): # fazendo uma inserção, dinâmica, aleatória e retornando essa árvore modificada como resultado
+
+    values = random.sample(range(1, 1001), 42)
+    tree = BinarySearchTree()
+
+    for value in values:
+        tree.insert(value)
+
+    return tree
+
+def example_tree(): # ESSA FUNÇÃO ESTÁ AQUI APENAS PARA FAZER UMA EXIBIÇÃO EM NÍVEL DOS ITENS PRESENTES NA ÁRVORE EXEMPLAR DO ARQUIVO
+                    # tree_concepts.txt - na aba "percursos em árvores - percurso em nível"
+
+    values = [61, 89, 66, 43, 51, 16, 55, 11, 79, 77, 82, 32] # <- são os mesmo valores presentes lá, para vermos se os números estão
+    tree = BinarySearchTree()                                # sendo vistos nível a nível com a mesma estrutura do exemplo
+
+    for value in values:
+        tree.insert(value)
+
+    return tree
+
+binary_search_tree = example_tree()
+binary_search_tree.levelorder_search()

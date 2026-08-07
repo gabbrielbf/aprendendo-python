@@ -81,8 +81,8 @@ class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulan
                 queue.push(node.left)
             if node.right:
                 queue.push(node.right)
-                
-            print(node) # exibindo o nó da vez armazenado
+
+            print(node, end=' ') # exibindo o nó da vez armazenado
 
     def height(self, node=None): # replicando o método acima aqui abaixo para calcular a altura de determinado lado de a árvore 
         if node is None:

@@ -181,5 +181,5 @@ O exemplo abaixo seguido de notações irá facilitar a compreensão com conjunt
          /  \     \             \
        11    32    55            79
                                 /  \
-                              77    32
-
+                              77    82
+                              
