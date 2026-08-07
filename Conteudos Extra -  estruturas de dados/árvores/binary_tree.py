@@ -6,6 +6,7 @@ ROOT = 'root' # criando um modelo de constante para servir de ponto de partida n
               # sem precisar passar um nó específico
 
 class Node:
+
     def __init__(self, data):
         self.data = data
         self.left = None # <- Lembre-se que o modelo de árvore binária exige obrigatóriamente do dev a implementação de dois dados
@@ -17,6 +18,7 @@ class Node:
         return str(self.data)
     
 class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulando os métodos e tratando os dados passados na classe Node()
+
     def __init__(self, data=None, node=None):
         if node: # <- agora conseguimos construir uma sub-árvore a partir de um nó
             self.root = node
@@ -30,6 +32,7 @@ class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulan
 
     # método que faz o percurso em ordem simétrica
     def simetric_search(self, node=None):
+
         if node is None: # <- esse bloco confere se o nó está vazio, caso sim, percorra a partir da raiz
             node = self.root
 
@@ -45,6 +48,7 @@ class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulan
         return
 
     def posorder_search(self, node=None): # <- iniciando o valor do parâmetro para conseguir trabalhar sem inserir valores
+
         if node is None:
             node = self.root # <- se o nó estiver vazio, o nó passsa a ser a raiz
 
@@ -57,16 +61,21 @@ class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulan
         print(node) # e por fim, exibindo a raiz, que no caso seria o nó da vez a ser exibido
 
     def inorder_search(self, node=None): # <- método criado para fazer a exibição dos nós de uma árvore de forma crescente/ordenada
+
         if node is None: # ao invés de visitar a raiz no final igual o pós ordem, visitamos no meio da execução
             node = self.root
+
         if node.left:
             self.inorder_search(node.left)
+
         print(node, end=' ')
+
         if node.right:
             self.inorder_search(node.right)
 
     def levelorder_search(self, node=ROOT): # <- fazendo essa modificação, podemos usar o valor None no meétodo com algum significado que faça
-        if node == ROOT:                    # que faça sentido na execução
+                                            # que faça sentido na execução
+        if node == ROOT:                  
             node = self.root # <- se o nó da vez for igual ao valor 'root', esse nó passa a ser a raiz da árvore
 
         queue = Queue()
@@ -85,6 +94,7 @@ class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulan
             print(node, end=' ') # exibindo o nó da vez armazenado
 
     def height(self, node=None): # replicando o método acima aqui abaixo para calcular a altura de determinado lado de a árvore 
+
         if node is None:
             node = self.root 
 
@@ -104,16 +114,22 @@ class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulan
             return height_left + 1
     
 class BinarySearchTree(BinaryTree):
+
     def insert(self, value):
+
         parent = None # <- variavel criada para conferência de tamanho do valor, por ex. testamos se x é maior y, caso seja jogamos x a direita
                         # caso não seja, irá ser alocado a esquerda.
         x = self.root
+
         while(x): # <- enquanto esse valor parâmetrado for diferente do vazio
+
             parent = x # <- vamos definir o parente pelo valor da vez na raiz 
+
             if value < x.data: # <- e em seguida vamos avançar esse valor do parente para alguma direção
                 x = x.left
             else:
                 x = x.right
+
         if parent is None: # <- isso aqui cria um nó com o valor parâmetrado para se tornar a raiz da árvore somente se CASO a raiz esteja vazia
             self.root = Node(value)
         elif value < parent.data:
@@ -122,8 +138,10 @@ class BinarySearchTree(BinaryTree):
             parent.right = Node(value)
 
     def search(self, value, node=0): # iniciando node com zero para sabermos que nenhum valor foi passado ao nó da vez
+
         if node == 0:
             node = self.root # <- se nada foi passado, a raiz passa a ser o valor do nó
+            
         if node is None or node.data == value: # <- se node for vazio ou node for igual ao valor que estamos procurando na árvore binária
             return BinarySearchTree(node) # <- não faz sentido retornar o nó em si pois isso seria válido apenas se estivessimos trabalhando com
         # listas, já que não é o caso, podemos retornar uma sub-árvore, uma árvore que está iniciando A PARTIR daquele específico nó, para
