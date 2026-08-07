@@ -1,5 +1,10 @@
 # Implementando uma árvore binária, esse arquivo será usado como base para todos os arquivos exemplo.py criados
 
+from queue import Queue # <- importando estrutura de dados para uso no novo meétodo implementado "levelorder_search"
+
+ROOT = 'root' # criando um modelo de constante para servir de ponto de partida na execução do programa para rodar saindo a partir da raiz
+              # sem precisar passar um nó específico
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -59,6 +64,25 @@ class BinaryTree: # <- Responsável pela parte inteligente da árvore, manipulan
         print(node, end=' ')
         if node.right:
             self.inorder_search(node.right)
+
+    def levelorder_search(self, node=ROOT): # <- fazendo essa modificação, podemos usar o valor None no meétodo com algum significado que faça
+        if node == ROOT:                    # que faça sentido na execução
+            node = self.root # <- se o nó da vez for igual ao valor 'root', esse nó passa a ser a raiz da árvore
+
+        queue = Queue()
+        queue.push(node)
+
+        while len(queue): # enquanto o tamanho da fila for maior que zero
+
+            node = queue.pop()
+            # na sequência, colocamos na fila os filhos desse nó armazenado antes de prosseguir com o resto da estrutura
+
+            if node.left: # conferindo se os nós que estão a esqueda ou direita são diferentes de None
+                queue.push(node.left)
+            if node.right:
+                queue.push(node.right)
+                
+            print(node) # exibindo o nó da vez armazenado
 
     def height(self, node=None): # replicando o método acima aqui abaixo para calcular a altura de determinado lado de a árvore 
         if node is None:
