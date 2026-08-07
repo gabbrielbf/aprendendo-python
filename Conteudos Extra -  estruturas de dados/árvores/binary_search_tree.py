@@ -3,6 +3,9 @@
 import random
 from binary_tree import BinarySearchTree
 
+random.seed(77) # <- especificando a semente do número aleatório para exbibir a árvore mais correta visualmente e retendo os mesmo valores
+# exbidos na lista abaixo
+
 values = random.sample(range(1, 1001), 42) # <- função para retornar uma LISTA de 42 números inteiros únicos e sem repetição 
                                            # em um intervalo de 1 até 1000
 binary_search_tree = BinarySearchTree()
