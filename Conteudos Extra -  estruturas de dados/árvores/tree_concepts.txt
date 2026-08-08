@@ -2,18 +2,22 @@
 
 * VALORES A DIREITA SÃO MAIORES QUE OS DA ESQUERDA <- ISSO É REGRA PRÉ DEFINIDA! *
 
-O que são nós? Ligação de informações não lineares através de uma raiz específica, um exemplo seriam as listas encadeadas.
-O que são folhas? Nós isolados no fim das árvores sem ligações abaixo deles.
- Ex.
-        A <- Raiz, pai de B, C mas não de D. Porém o A seria o "ancestral" de D
-       / \  
-      B   C <- Estrutura da árvore
-           \
-            D <-  Folha
+- Base inicial para compreender o que é essa estrutura de dados: 
 
-Floresta: São vários conjuntos de 2 ou mais nós isolados não ligados um ao outro
+  O que são NÓS? Ligação de informações não lineares através de uma raiz específica, um exemplo seriam as listas encadeadas.
+  O que são FOLHAS? Nós isolados no fim das árvores sem ligações abaixo deles.
+  
+    Ex.
+            A <- Raiz, pai de B, C mas não de D. Porém o A seria o "ancestral" de D
+          / \  
+          B   C <- Estrutura da árvore
+              \
+                D <-  Folha
+
+  O que são FLORESTAS? Vários conjuntos de 2 ou mais nós isolados não ligados um ao outro
 
 - Árvore binária, o que é? É um modelo de árvore que obriga o dev a fornecer exatamente 2 filhos a cada nó.
+
  Ex.
         A <- Raiz
        / \
@@ -40,98 +44,109 @@ Floresta: São vários conjuntos de 2 ou mais nós isolados não ligados um ao o
                   \   
           folha -> I 
 
-- Caminho é a sequência de nós que estão interligados entre si onde conseguimos avançar entre eles por meio de arestas conectadas na árvore
- Ex.
-    O caminho para chegar a variavel G é determinado por B, D e por último G
-O que é o comprimento de um determinado caminho? Seria o número total de nós que estão dentro do caminho, que no caso do exemplo acima seria 3. B, D e G
+ * Caminho é a sequência de nós que estão interligados entre si onde conseguimos avançar entre eles por meio de arestas conectadas na árvore
+    Ex.
+        O caminho para chegar a variavel G é determinado por B, D e por último G
 
-- Altura é comprimento do caminho entre a raiz e a folha de maior profundidade
-O que seria a profundidade? É a distância do caminho de determando nó até a raiz da árvore
- Ex.
-    A raiz tem profundidade 1, pois o caminho dela até ela mesma é apenas A
-    Os nós B e E tem profundidade 2
-    Os nós C, D e F tem profundidade 3
-    Os nós G, H e J tem profundidade 4
-    O nó I tem profundidade 5, a altura dessa árvore seria o caminho traçado desse nó até a raiz
+ * O que é o comprimento de um determinado caminho? Seria o número total de nós que estão dentro do caminho, 
+   que no caso do exemplo acima seria 3. B, D e G
 
-Altura máxima e altura mínima: Construção de árvore com (n) números de dados, 
-qual a altura máxima e mínima que conseguimos construir com esses mesmos 5 dados?
- Ex.
-       Máxima (ou zigue-zague):
-                A <- Raiz
-              /   \___
-             B        E
-            / \      /   -> Seria o caminho traçado pelos nós até a folha mais profunda de forma encadeada, sem sub-dividir filhos a esqueda ou direita.
-  folha -> C   D    F       No exemplo dessa árvore a esquerda, a altura máxima seria o caminho traçado entre A, B, D, H e I.
-              / \    \    
-    folha -> G   H    J <- folha
-                  \   
-          folha -> I    # Esse modelo de árvore se torna degenarado, obsoleto, pois trata-se quase literalmente de uma lista encadeada
+ * Altura é comprimento do caminho entre a raiz e a folha de maior profundidade
 
-       fórmula: h(n)max = n # A altura maáxima nesse caso seria 5, pois temos 5 nós que ligam A e I
-  ------------------------------------------------------------------------------------------------------------------------------------------------------
-       Mínima:
-                A <- Raiz
-              /   \___
-             B        E
-            / \      /   -> Seria a preservação da árvore em 3 níveis dos nós, por exemplo: começando pelo pela raiz A, puxando um filho para cada lado
-  folha -> C   D    F       do nó B e E e logo após isso defininmos entre: C e D ou C e F, isso não altera o fator 3 níveis de nós.
-              / \    \    
-    folha -> G   H    J <- folha
-                  \   
-          folha -> I
+ * O que seria a profundidade? É a distância do caminho de determando nó até a raiz da árvore, veja o exemplo abaixo 
+   baseando-se nas informações dos nós da árvore do exemplo acima
 
-       fórmula; h(n)min = 1 + (o PISO de log de n na base 2 (a não ser que o problema computacional diga o contrário, a base desse log sempre vai ser 2!))
+    Ex.
+        A raiz tem profundidade 1, pois o caminho dela até ela mesma é apenas A
+        Os nós B e E tem profundidade 2
+        Os nós C, D e F tem profundidade 3
+        Os nós G, H e J tem profundidade 4
+        O nó I tem profundidade 5, a altura dessa árvore seria o caminho traçado desse nó até a raiz
 
-       nota -> O que queremos dizer com (1 + PISO de log de n na base 2)?
-        Ex.
-            Vamos usar x (um número qualquer) por exemplo para melhor compreensão.
+- Altura máxima e altura mínima: Construção de árvore com (n) números de dados.
+  Qual a altura máxima e mínima que conseguimos construir com esses mesmos 5 dados?
 
-              Quando dizemos que o PISO de x é igual a k estamos dizendo primeiro que k é um número inteiro, então o mesmo pertence ao conjunto
-              dos números inteiros {-3, -2, -1, 0, 1, 2, 3}
+  Ex.
+        Máxima (ou zigue-zague):
 
-              de forma que k é menor (<) ou igual (=) a x, ou seja: k é o menor número inteiro quese aproxima de x e x é menor que (k + 1)
+                  A <- Raiz
+                /   \___
+              B        E
+              / \      /   -> Seria o caminho traçado pelos nós até a folha mais profunda de forma encadeada, sem sub-dividir filhos a esqueda ou direita.
+    folha -> C   D    F       No exemplo dessa árvore a esquerda, a altura máxima seria o caminho traçado entre A, B, D, H e I.
+                / \    \    
+      folha -> G   H    J <- folha
+                    \   
+            folha -> I    # Esse modelo de árvore se torna degenarado, obsoleto, pois trata-se quase literalmente de uma lista encadeada
 
-       Qual o resultado dessa fórmula usando o próprio 5 como excemplo?
-           Res.
-              1 + PISO de log 5 na base 2
-              log na base 2 de 4 = 2 (pois 2² = 4)
-              próximo número fechadinho que teríamos é 8
-              logo o log de 8 na base 2 = 3
+        fórmula: h(n)max = n # A altura maáxima nesse caso seria 5, pois temos 5 nós que ligam A e I
+    ------------------------------------------------------------------------------------------------------------------------------------------------------
+        Mínima:
 
-              portanto sabemos que 5 por ser maior do que 4 e menor do que 8
-              o logarítmo precisa estar entre 2 e 3 (mais precisamente = 2,32~2)
+                  A <- Raiz
+                /   \___
+              B        E
+              / \      /   -> Seria a preservação da árvore em 3 níveis dos nós, por exemplo: começando pelo pela raiz A, puxando um filho para cada lado
+    folha -> C   D    F       do nó B e E e logo após isso defininmos entre: C e D ou C e F, isso não altera o fator 3 níveis de nós.
+                / \    \    
+      folha -> G   H    J <- folha
+                    \   
+            folha -> I
 
-              o piso disso acima é o menor número que aproxima, no caso 2
-              portanto: 1 + 2 = 3
+        fórmula: h(n)min = 1 + (o PISO de log de n na base 2 (a não ser que o problema computacional diga o contrário, a base desse log sempre vai ser 2!))
 
-              e de fato, se formos seguir a notação presente na árvore exemplar mínima, vamos que tem exatamente 3 níveis de profundidade.
-       
-       Notação autoexplicativa:
-           
-           No primeiro nível temos a raiz, um único elemento - 1
-           No segundo nível temos 2 elementos, logo dobramos o valor - 2
-           No terceiro nível usamos a mesma ideologia de antes e dobramos novamente caso tivessemos na árvore exemplar um parceiro
-           a direita do nó F - 4
+        nota -> O que queremos dizer com (1 + PISO de log de n na base 2)?
 
-           O mesmo valeria para os filhos sub-sequuentes: 8, 16, 32 e por aí vai... Seguindo a metodologia das potências de 2
+          Ex.
+              Vamos usar x (um número qualquer) por exemplo para melhor compreensão.
 
-O que é balanceamento e desbalanceamento de uma árvore? Trata-se de quando um dos lados de uma árvore possui mais nós do que outro.
+                Quando dizemos que o PISO de x é igual a k estamos dizendo primeiro que k é um número inteiro, então o mesmo pertence ao conjunto
+                dos números inteiros {-3, -2, -1, 0, 1, 2, 3}
 
-O exemplo abaixo seguido de notações irá facilitar a compreensão com conjunto de (n) números passados abaixo:
- N = {15, 29, 49, 10, 8, 67, 59, 9, 13, 20, 14}
- 
- Ex.
-            Desbalanceada
-            formula para calcular o fator de balanceamento: FB = (alt da sub-árvore ESQ - alt da sub-árvore DIR)
+                de forma que k é menor (<) ou igual (=) a x, ou seja: k é o menor número inteiro quese aproxima de x e x é menor que (k + 1)
 
-                15 <- Raiz
-                  \___
-                      27
-                        \___    -> O lado direito dessa árvore que possui os maiores valores estão em desbalanço com relação ao restante da estrutura
-                            49
+        Qual o resultado dessa fórmula usando o próprio 5 como excemplo?
+
+            Res.
+                1 + PISO de log 5 na base 2
+                log na base 2 de 4 = 2 (pois 2² = 4)
+                próximo número fechadinho que teríamos é 8
+                logo o log de 8 na base 2 = 3
+
+                portanto sabemos que 5 por ser maior do que 4 e menor do que 8
+                o logarítmo precisa estar entre 2 e 3 (mais precisamente = 2,32~2)
+
+                o piso disso acima é o menor número que aproxima, no caso 2
+                portanto: 1 + 2 = 3
+
+                e de fato, se formos seguir a notação presente na árvore exemplar mínima, vamos que tem exatamente 3 níveis de profundidade.
+        
+        Notação autoexplicativa:
             
-            # https://www.youtube.com/watch?v=JAeQuNsKQWk <- Explicação detalhada das resoluções
+            No primeiro nível temos a raiz, um único elemento - 1
+            No segundo nível temos 2 elementos, logo dobramos o valor - 2
+            No terceiro nível usamos a mesma ideologia de antes e dobramos novamente caso tivessemos na árvore exemplar um parceiro
+            a direita do nó F - 4
+
+            O mesmo valeria para os filhos sub-sequuentes: 8, 16, 32 e por aí vai... Seguindo a metodologia das potências de 2
+
+- O que é balanceamento e desbalanceamento de uma árvore? Trata-se de quando um dos lados de uma árvore possui mais nós do que outro.
+
+  * O exemplo abaixo seguido de notações irá facilitar a compreensão com conjunto de (n) números passados abaixo:
+  
+  N = {15, 29, 49, 10, 8, 67, 59, 9, 13, 20, 14}
+  
+  Ex.
+              Desbalanceada
+              formula para calcular o fator de balanceamento: FB = (alt da sub-árvore ESQ - alt da sub-árvore DIR)
+
+                  15 <- Raiz
+                    \___
+                        27
+                          \___    -> O lado direito dessa árvore que possui os maiores valores estão em desbalanço com relação ao restante da estrutura
+                              49
+              
+              # https://www.youtube.com/watch?v=JAeQuNsKQWk <- Explicação detalhada das resoluções
   
 - Percursos em árvores
 
@@ -192,4 +207,5 @@ O exemplo abaixo seguido de notações irá facilitar a compreensão com conjunt
   exemplo temos o 11 que deixou de ser o menor elemento quando o 7 foi introduzido a sua esquerda, mas isso não impede o nó de ter um filho a
   direita, caso introduzissimos 12 por exemplo, a árvore seguiria descendo com seus específicos nós.
 
-  Da mesma maneira, o maior elemento é o cara que tá mais a direita, sem filho a direita.                         
+  Da mesma maneira, o maior elemento é o cara que tá mais a direita, sem filho a direita.  
+
