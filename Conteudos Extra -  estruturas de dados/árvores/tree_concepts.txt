@@ -209,3 +209,4 @@
 
   Da mesma maneira, o maior elemento é o cara que tá mais a direita, sem filho a direita.  
 
+- Removendo um nó de uma Árvore Binária de busca: 
